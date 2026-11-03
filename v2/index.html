@@ -1,0 +1,1012 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>未启之音</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: single-page neon site that mirrors the group's own homepage (navy ground, cyan eyebrows, outlined OVERTURE, violet gradient pills, glass cards). Sections follow its order: hero, logo, members, events, goods, tickets. Deliberately one dark look. */
+:root{
+  color-scheme:dark;
+  --bg:#08091F; --card:rgba(255,255,255,.045); --card-2:rgba(255,255,255,.075);
+  --text:#F3F4FF; --muted:#A9B0E3; --line:rgba(150,130,255,.30);
+  --cyan:#35E3F5; --violet:#8B5CFF; --violet-d:#6C3BF5; --magenta:#F052C8; --on-bright:#08091F;
+  --cheer:#FF5C93;
+  --f-display:"Sora","Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --f-body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+html{scroll-behavior:smooth;background:var(--bg)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  background:radial-gradient(900px 520px at 88% -4%,rgba(108,59,245,.36),transparent 65%),radial-gradient(760px 520px at -6% 16%,rgba(36,70,220,.28),transparent 65%),var(--bg);
+  background-repeat:no-repeat;color:var(--text);font:400 1rem/1.8 var(--f-body);
+  padding-block:0 4rem;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+*,*::before,*::after{box-sizing:border-box}
+a{color:inherit}
+p{margin:0}
+img{display:block;height:auto}
+button{font-family:inherit;color:inherit}
+.wrap{max-width:1160px;margin-inline:auto}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+.eyebrow{font:700 .75rem/1.6 var(--f-display);letter-spacing:.26em;text-transform:uppercase;color:var(--cyan)}
+.eyebrow.m{color:var(--muted)}
+h1,h2,h3,h4{margin:0}
+h2{font:800 clamp(1.8rem,4.4vw,2.9rem)/1.25 var(--f-display);text-wrap:balance;margin-top:.4rem}
+.sub{margin-top:.9rem;max-width:40em;color:var(--muted)}
+.sec{margin-top:clamp(4rem,9vw,6.5rem)}
+.glass{background:var(--card);border:1px solid var(--line);border-radius:20px}
+
+/* header */
+.top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.25rem 1.5rem;padding-block:1.1rem;border-bottom:1px solid rgba(150,130,255,.14)}
+.mark{font:800 1.15rem/1 var(--f-display);letter-spacing:.14em;text-decoration:none;text-transform:uppercase;text-shadow:0 0 18px rgba(139,92,255,.6)}
+.mark span{color:var(--cyan)}
+.top nav{display:flex;flex-wrap:wrap;gap:.1rem 1.5rem;font:600 .8125rem var(--f-display);letter-spacing:.04em}
+.top nav a{text-decoration:none;padding:.55rem 0;color:var(--muted)}
+.top nav a:hover{color:var(--text)}
+.ribbon{margin-top:1rem;border:1px solid rgba(53,227,245,.45);border-radius:14px;background:rgba(53,227,245,.07);color:var(--text);padding:.65rem 1rem;font-size:.8125rem;line-height:1.7}
+.ribbon b{color:var(--cyan);font-weight:700}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,5vw,64px);align-items:center;padding-top:clamp(2rem,5vw,3.6rem)}
+.hero-copy{min-width:0}
+h1{display:flex;flex-direction:column;margin:.9rem 0 1.4rem;font:800 clamp(3rem,9.4vw,6.2rem)/.98 var(--f-display);letter-spacing:-.01em;text-transform:uppercase}
+h1 .l2{color:transparent;-webkit-text-stroke:2px var(--magenta);text-shadow:0 0 28px rgba(240,82,200,.55)}
+.lede{max-width:34em;color:var(--muted);font-size:1.0625rem}
+.cta-row{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:1.8rem}
+.btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:999px;padding:.95rem 1.7rem;font:700 1rem/1 var(--f-body);text-decoration:none;cursor:pointer;color:#fff;background:linear-gradient(90deg,var(--violet-d),#B04BFF);box-shadow:0 10px 30px rgba(122,70,255,.45);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(122,70,255,.6)}
+.btn.ghost{background:transparent;border:1px solid rgba(160,140,255,.55);box-shadow:none}
+.btn.ghost:hover{background:rgba(139,92,255,.14);box-shadow:none}
+.count{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:2.2rem;max-width:440px}
+.count div{padding:.7rem .7rem .6rem;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:14px}
+.count b{display:block;font:700 clamp(1.7rem,6vw,2.4rem)/1.1 var(--f-mono);font-variant-numeric:tabular-nums}
+.count span{font:600 .6875rem var(--f-display);letter-spacing:.18em;color:var(--muted)}
+.hero-art{position:relative;min-width:0;max-width:500px;justify-self:end;width:100%;margin:0}
+.hero-art .frame{position:relative;border-radius:28px;border:1px solid var(--line);overflow:hidden;box-shadow:0 0 70px rgba(139,92,255,.38);background:linear-gradient(160deg,#1b1450,#10113a)}
+.hero-art img{width:100%}
+.hero-art .tag{position:absolute;left:14px;bottom:14px;border:1px solid var(--cyan);border-radius:999px;background:rgba(8,9,31,.78);color:var(--cyan);padding:.3rem .8rem;font:700 .6875rem var(--f-display);letter-spacing:.18em}
+.spark{position:absolute;pointer-events:none;font-size:1.4rem;line-height:1}
+.cap{margin-top:.7rem;font-size:.75rem;line-height:1.7;color:var(--muted)}
+
+/* logo block + wave */
+.logo{text-align:center;margin-top:clamp(3rem,7vw,5rem)}
+.logo .big{font:800 clamp(2.6rem,9vw,5rem)/1.1 var(--f-display);font-style:italic;text-shadow:0 0 30px rgba(180,120,255,.8),0 0 70px rgba(108,59,245,.6)}
+.logo .tagl{margin-top:.6rem;font:700 .875rem var(--f-display);letter-spacing:.42em;color:var(--cyan)}
+.logo .zhn{margin-top:.3rem;color:var(--muted);font-size:.9375rem;letter-spacing:.3em}
+.logo .div{margin-top:1rem;letter-spacing:.8em;font-size:1.1rem}
+.logo .div i{font-style:normal}
+.logo .div i:nth-child(1){color:var(--cyan)}.logo .div i:nth-child(2){color:var(--magenta)}.logo .div i:nth-child(3){color:var(--violet)}.logo .div i:nth-child(4){color:var(--cyan)}
+#band{display:block;width:100%;height:96px;margin-top:1.4rem;touch-action:pan-y}
+
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:12px;margin:2.2rem 0 0;padding:0}
+.facts div{padding:1rem 1.1rem;min-width:0}
+.facts dt{font:700 .6875rem var(--f-display);letter-spacing:.2em;color:var(--cyan)}
+.facts dd{margin:.25rem 0 0;font:700 1.2rem/1.4 var(--f-display)}
+.facts dd small{display:block;margin-top:.15rem;font:400 .75rem/1.6 var(--f-body);color:var(--muted)}
+
+/* story */
+.split{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,5vw,64px);margin-top:1.8rem;align-items:start}
+.split>*{min-width:0}
+.beats{list-style:none;margin:0;padding:0;display:grid;gap:1rem}
+.beats li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 1rem;padding:1.1rem 1.2rem}
+.beats .n{width:2.2rem;height:2.2rem;border-radius:50%;background:linear-gradient(135deg,var(--violet-d),var(--magenta));display:grid;place-items:center;font:700 .85rem var(--f-display);margin-top:.15rem}
+.beats h3{font:700 1.15rem/1.5 var(--f-body)}
+.beats .ko{font-size:.8125rem;color:var(--cyan);line-height:1.6}
+.beats .d{margin-top:.3rem;color:var(--muted);font-size:.9375rem;line-height:1.75}
+.pull{margin-top:1rem;padding:1.1rem 1.3rem;border-radius:20px;border:1px solid var(--line);background:linear-gradient(120deg,rgba(108,59,245,.28),rgba(240,82,200,.12))}
+.pull b{display:block;font:800 1.3rem/1.4 var(--f-body)}
+.pull span{font-size:.8125rem;color:var(--muted)}
+.photo{margin:0}
+.photo img{width:100%;border-radius:20px;border:1px solid var(--line)}
+.photo.tall img{aspect-ratio:3/3.2;object-fit:cover}
+
+/* members */
+.cast{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,235px),1fr));gap:18px;margin-top:1.8rem}
+.card{min-width:0;display:block;width:100%;text-align:left;padding:0;cursor:pointer;color:var(--text);border-radius:22px;overflow:hidden;transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px));transition:transform .14s ease-out,box-shadow .2s,border-color .2s}
+.card:hover{--ty:-4px}
+.card .ph{position:relative}
+.card img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.card .num{position:absolute;left:12px;top:12px;border-radius:999px;background:rgba(8,9,31,.78);border:1px solid var(--line);padding:.15rem .7rem;font:700 .75rem var(--f-display);letter-spacing:.16em;color:var(--cyan)}
+.card .body{display:block;padding:1rem 1.1rem 1.2rem}
+.card h3{font:800 1.7rem/1.15 var(--f-display);letter-spacing:.04em;text-transform:uppercase}
+.card .role{display:block;margin-top:.25rem;font:700 .6875rem var(--f-display);letter-spacing:.2em;color:var(--cyan)}
+.card .q{display:block;margin-top:.6rem;color:var(--muted);font-size:.9375rem;line-height:1.7}
+.card .ko{display:block;margin-top:.15rem;font-size:.75rem;color:rgba(169,176,227,.75)}
+.chip{display:inline-block;margin-top:.7rem;border:1px solid var(--c);color:var(--c);border-radius:999px;padding:.12rem .7rem;font:700 .6875rem var(--f-display);letter-spacing:.16em}
+.card[aria-pressed="true"]{border-color:var(--c);box-shadow:0 0 0 1px var(--c),0 0 36px color-mix(in srgb,var(--c) 45%,transparent)}
+.cheer{margin-top:1.4rem;display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;font:600 .8125rem var(--f-display);letter-spacing:.06em;color:var(--muted)}
+.cheer i{width:1.1rem;height:1.1rem;border-radius:50%;background:var(--cheer);box-shadow:0 0 14px var(--cheer);display:inline-block}
+
+/* events */
+.events{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:18px;margin-top:1.8rem}
+.ev{display:grid;grid-template-columns:auto minmax(0,1fr);gap:1.2rem;padding:1.3rem;min-width:0}
+.date{width:5.2rem;border-radius:16px;background:linear-gradient(160deg,var(--violet-d),var(--magenta));text-align:center;padding:.7rem .3rem;align-self:start}
+.date small{display:block;font:700 .75rem var(--f-display);letter-spacing:.24em}
+.date b{display:block;font:800 2.5rem/1.05 var(--f-display)}
+.ev h3{font:800 1.3rem/1.35 var(--f-display)}
+.ev .meta{margin-top:.2rem;font:600 .75rem var(--f-display);letter-spacing:.1em;color:var(--cyan)}
+.ev p.d{margin-top:.5rem;color:var(--muted);font-size:.9375rem;line-height:1.75}
+.ev .btn{margin-top:1rem;padding:.7rem 1.3rem;font-size:.875rem}
+.sub2{margin-top:3rem;font:800 1.4rem/1.4 var(--f-display)}
+.rail{overflow-x:auto;margin-top:1.2rem;padding-bottom:.4rem}
+.railin{min-width:700px}
+.bar{display:flex;height:3.4rem;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.bar button{flex:0 0 auto;border:0;border-right:1px solid rgba(8,9,31,.7);padding:0 .3rem;font:700 .9375rem var(--f-body);cursor:pointer;overflow:hidden;white-space:nowrap;min-width:0;color:#fff}
+.bar button:last-child{border-right:0}
+.bar button.off{background:repeating-linear-gradient(135deg,rgba(255,255,255,.06) 0 7px,rgba(255,255,255,.015) 7px 14px);color:var(--muted);font-weight:500}
+.bar button.c1{background:linear-gradient(180deg,#7B4DFF,var(--violet-d))}
+.bar button.c2{background:linear-gradient(180deg,#F56ED2,#C93AA8);color:var(--on-bright)}
+.bar button[aria-pressed="true"]{background:var(--cyan);color:var(--on-bright);box-shadow:0 0 24px rgba(53,227,245,.7) inset}
+.ticks{position:relative;height:1.6rem;margin-top:.4rem;font:500 .75rem var(--f-mono);color:var(--muted)}
+.ticks span{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap}
+.ticks span:first-child{transform:none}
+.ticks span:last-child{transform:translateX(-100%)}
+.swipe{display:none;font-size:.75rem;color:var(--muted);margin-top:.3rem}
+.spanel{margin-top:1rem;padding:1.2rem 1.3rem;display:grid;grid-template-columns:minmax(0,.7fr) repeat(3,minmax(0,1fr));gap:1rem 1.6rem}
+.spanel>*{min-width:0}
+.spanel h3{font:800 1.7rem/1.2 var(--f-body)}
+.spanel .t{font-size:.8125rem;color:var(--cyan)}
+.spanel dt{font:700 .6875rem var(--f-display);letter-spacing:.18em;color:var(--cyan)}
+.spanel dd{margin:.15rem 0 0}
+.spanel dl{margin:0}
+
+/* space */
+.archive{margin:0;padding:.5rem 1.2rem}
+.archive div{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 0;border-bottom:1px solid rgba(150,130,255,.16)}
+.archive div:last-child{border-bottom:0}
+.archive dt{font-size:.8125rem;color:var(--cyan);flex:none}
+.archive dd{margin:0;text-align:right;font-weight:500}
+.prose{display:grid;gap:1.1rem;max-width:36em;color:var(--muted)}
+.pair{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:16px;margin-top:1.8rem;align-items:end}
+.pair .photo:last-child img{aspect-ratio:593/693;object-fit:cover}
+.seg{display:inline-flex;margin-top:1.4rem;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.seg button{border:0;background:transparent;padding:.55rem 1.2rem;font:600 .8125rem var(--f-display);cursor:pointer;min-height:2.75rem;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:linear-gradient(90deg,var(--violet-d),#B04BFF);color:#fff}
+.mapbox{margin-top:.9rem;border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:0 0 50px rgba(108,59,245,.25)}
+.mapbox img{width:100%;aspect-ratio:2/1;object-fit:cover}
+.zones{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:1.2rem 0 0;padding:0;list-style:none}
+.zbtn{width:100%;height:100%;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:.6rem;text-align:left;border:1px solid var(--line);border-radius:16px;background:var(--card);padding:.65rem .8rem;cursor:pointer;min-height:3.4rem;color:var(--text)}
+.zbtn b{font:800 1.4rem/1 var(--f-display);color:var(--cyan)}
+.zbtn span{font-weight:700;font-size:.875rem;line-height:1.4}
+.zbtn[aria-pressed="true"]{border-color:var(--cyan);background:rgba(53,227,245,.12);box-shadow:0 0 24px rgba(53,227,245,.3)}
+.zpanel{margin-top:1.2rem;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);overflow:hidden}
+.zpanel>*{min-width:0}
+.zhead{padding:1.3rem;border-right:1px solid var(--line);background:linear-gradient(160deg,rgba(108,59,245,.3),transparent)}
+.zhead .big{font:800 4.2rem/1 var(--f-display);color:var(--cyan);text-shadow:0 0 24px rgba(53,227,245,.5)}
+.zhead h3{font:800 1.4rem/1.35 var(--f-body);margin-top:.3rem}
+.zhead p{font-size:.8125rem;color:var(--muted)}
+.zbody{margin:0;padding:.4rem 1.3rem}
+.zbody div{padding:.75rem 0;border-bottom:1px solid rgba(150,130,255,.16)}
+.zbody div:last-child{border-bottom:0}
+.zbody dt{font:700 .6875rem var(--f-display);letter-spacing:.18em;color:var(--cyan)}
+.zbody dd{margin:.1rem 0 0}
+
+/* goods */
+.goods{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px;margin-top:1.8rem}
+.good{padding:1.4rem;min-width:0;display:flex;flex-direction:column;gap:.5rem}
+.good svg{width:3.2rem;height:3.2rem;stroke:var(--cyan);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 8px rgba(53,227,245,.6))}
+.good h3{font:800 1.15rem/1.4 var(--f-display)}
+.good p{color:var(--muted);font-size:.9375rem;line-height:1.7}
+.good .pr{margin-top:auto;padding-top:.6rem;font:700 1.3rem var(--f-display);color:var(--magenta);font-variant-numeric:tabular-nums}
+
+/* cta */
+.cta{margin-top:clamp(4rem,9vw,6.5rem);text-align:center;padding:clamp(2rem,6vw,3.6rem) 1.2rem;border-radius:28px;border:1px solid var(--line);background:radial-gradient(600px 260px at 50% 0%,rgba(139,92,255,.35),transparent 70%),var(--card)}
+.cta h2{margin-top:0}
+.cta .btn{margin-top:1.4rem}
+
+/* tickets */
+.buy{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,5vw,56px);margin-top:1.8rem;align-items:start}
+.buy>*{min-width:0}
+fieldset{border:0;padding:0;margin:0;display:grid;gap:14px;min-width:0}
+legend{padding:0;margin-bottom:.7rem}
+.tier{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.15rem 1rem;align-items:baseline;border:1px solid var(--line);border-radius:18px;padding:1rem 1.2rem;cursor:pointer;background:var(--card)}
+.tier input{position:absolute;opacity:0;pointer-events:none}
+.tier b{font:700 1.2rem/1.3 var(--f-body)}
+.tier .pr{font:700 1.3rem/1 var(--f-display);font-variant-numeric:tabular-nums;color:var(--magenta)}
+.tier small{grid-column:1/-1;color:var(--muted);font-size:.875rem;line-height:1.65}
+.tier:has(input:checked){border-color:var(--cyan);background:rgba(53,227,245,.09);box-shadow:0 0 28px rgba(53,227,245,.25)}
+.tier:has(input:focus-visible){outline:3px solid var(--cyan);outline-offset:3px}
+.fields{display:grid;gap:14px;margin-top:1.4rem}
+.field{display:grid;gap:.35rem}
+.field label{font:600 .75rem var(--f-display);letter-spacing:.12em;color:var(--cyan)}
+.field input{width:100%;font:400 1rem var(--f-body);color:var(--text);background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:14px;padding:.75rem .9rem;min-height:2.9rem}
+.field input::placeholder{color:rgba(169,176,227,.6)}
+.field input:focus{border-color:var(--cyan);outline:none;box-shadow:0 0 0 3px rgba(53,227,245,.25)}
+.field small{font-size:.75rem;line-height:1.6;color:var(--muted)}
+.sum{padding:1.4rem}
+.sum dl{margin:0;display:grid;gap:.2rem}
+.sum dl div{display:flex;justify-content:space-between;gap:1rem;padding:.45rem 0;border-bottom:1px solid rgba(150,130,255,.16)}
+.sum dt{font-size:.8125rem;color:var(--muted)}
+.sum dd{margin:0;font-weight:700;text-align:right}
+.sum .total dd{font:800 1.9rem/1.1 var(--f-display);font-variant-numeric:tabular-nums;color:var(--cyan)}
+.qrow{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin:1rem 0}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.qty button{width:2.75rem;height:2.75rem;border:0;background:transparent;font:700 1.2rem var(--f-mono);cursor:pointer}
+.qty button:hover{background:rgba(139,92,255,.25)}
+.qty output{min-width:2.4rem;text-align:center;font:700 1.05rem var(--f-mono)}
+.sum .btn{width:100%;justify-content:center;margin-top:.4rem}
+.demo{margin-top:1rem;font-size:.75rem;line-height:1.7;color:var(--muted)}
+
+.done{margin-top:2.4rem;border-radius:24px;border:1px solid var(--cyan);overflow:hidden;background:var(--card);box-shadow:0 0 60px rgba(53,227,245,.2)}
+.done[hidden]{display:none!important}
+.done-head{padding:1.3rem 1.5rem;background:linear-gradient(90deg,var(--violet-d),#B04BFF 60%,var(--magenta))}
+.done-head h3{font:800 clamp(1.5rem,3.6vw,2.1rem)/1.25 var(--f-body)}
+.done-head h3:focus{outline:none}
+.done-head p{font-size:.8125rem;opacity:.92}
+.done-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
+.done-grid>*{min-width:0}
+.stub{padding:1.4rem;border-right:1px dashed var(--line)}
+.eticket{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.04)}
+.eticket .top2{padding:.7rem 1rem;background:var(--cheer);color:var(--on-bright);display:flex;justify-content:space-between;gap:1rem;font:700 .75rem var(--f-display);letter-spacing:.1em}
+.eticket h4{padding:1rem 1rem .2rem;font:800 1.7rem/1.2 var(--f-body)}
+.eticket dl{margin:0;padding:.4rem 1rem 1rem;display:grid;gap:.5rem}
+.eticket dl div{display:flex;justify-content:space-between;gap:1rem}
+.eticket dt{font-size:.75rem;color:var(--cyan);flex:none}
+.eticket dd{margin:0;text-align:right;font-weight:500;font-size:.9375rem}
+.barcode{height:44px;margin:0 1rem 1rem;opacity:.85;background:repeating-linear-gradient(90deg,var(--text) 0 2px,transparent 2px 4px,var(--text) 4px 5px,transparent 5px 9px,var(--text) 9px 12px,transparent 12px 14px)}
+.stub .ex{margin-top:.8rem;font-size:.75rem;color:var(--muted)}
+.msgs{padding:1.4rem}
+.tabs{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;max-width:100%}
+.tabs button{border:0;background:transparent;padding:.55rem 1.3rem;font:600 .8125rem var(--f-display);cursor:pointer;min-height:2.75rem;color:var(--muted)}
+.tabs button[aria-selected="true"]{background:linear-gradient(90deg,var(--violet-d),#B04BFF);color:#fff}
+.mail{margin-top:1rem;border-radius:16px;overflow:hidden;background:#EEF0FF;color:#14163A}
+.mail .hd{padding:.8rem 1rem;border-bottom:1px solid #CBD0F0;display:grid;gap:.15rem;font-size:.8125rem;line-height:1.6}
+.mail .hd span{color:#5A6090}
+.mail .hd b{font-weight:700;overflow-wrap:anywhere}
+.mail .bd{padding:1rem;display:grid;gap:.9rem;font-size:.9375rem;line-height:1.75}
+.mail table{width:100%;border-collapse:collapse;font-size:.875rem}
+.mail td{padding:.4rem 0;border-bottom:1px solid #D9DCF3;vertical-align:top}
+.mail td:first-child{font-size:.75rem;color:#5A6090;width:6.5em}
+.mail ul{margin:0;padding-left:1.2rem;display:grid;gap:.2rem}
+.mail .fine{font-size:.75rem;line-height:1.7;color:#5A6090}
+.sms{margin-top:1rem;display:grid;gap:.6rem;justify-items:start}
+.sms .who{font-size:.75rem;color:var(--muted)}
+.sms .bub{max-width:24em;border-radius:20px 20px 20px 6px;background:linear-gradient(135deg,rgba(108,59,245,.5),rgba(240,82,200,.28));border:1px solid var(--line);padding:.8rem 1rem;font-size:.9375rem;line-height:1.7;overflow-wrap:anywhere}
+.status{margin-top:1rem;font-size:.8125rem;line-height:1.7;border-left:3px solid var(--magenta);padding-left:.8rem;color:var(--muted)}
+.status.ok{border-color:var(--cyan)}
+.again{margin:0 1.4rem 1.4rem}
+.faq{margin-top:2.6rem;max-width:46em}
+.faq details{border-top:1px solid rgba(150,130,255,.2);padding:.2rem 0}
+.faq details:last-child{border-bottom:1px solid rgba(150,130,255,.2)}
+.faq summary{cursor:pointer;font-weight:700;padding:.8rem 0}
+.faq details p{padding:0 0 1rem;color:var(--muted)}
+
+footer{margin-top:clamp(3.5rem,8vw,5.5rem);border-top:1px solid rgba(150,130,255,.2);padding-top:1.2rem;display:grid;gap:.4rem;text-align:center;font-size:.75rem;line-height:1.8;color:var(--muted)}
+footer .lu{font:700 .8125rem var(--f-display);letter-spacing:.3em;color:var(--cyan)}
+
+/* effects */
+.top,main{position:relative;z-index:1}
+.progress{position:fixed;left:0;top:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--cyan),var(--violet),var(--magenta));box-shadow:0 0 12px rgba(139,92,255,.8);z-index:60;pointer-events:none}
+.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.aurora i{position:absolute;width:60vmax;height:60vmax;border-radius:50%;filter:blur(90px);will-change:transform}
+.aurora i:nth-child(1){left:-18vmax;top:-10vmax;background:radial-gradient(circle,#6C3BF5,transparent 65%);opacity:.30}
+.aurora i:nth-child(2){right:-22vmax;top:30vh;background:radial-gradient(circle,#F052C8,transparent 65%);opacity:.18}
+.aurora i:nth-child(3){left:20vw;bottom:-30vmax;background:radial-gradient(circle,#35E3F5,transparent 65%);opacity:.14}
+#trail{position:fixed;left:0;top:0;z-index:9998;pointer-events:none}
+#stick{position:fixed;left:0;top:0;z-index:9999;pointer-events:none;width:70px;height:200px;margin:-36px 0 0 -35px;visibility:hidden;will-change:transform;transition:opacity .15s}
+#stick svg{display:block;transform-origin:35px 36px;transition:transform .16s ease-out}
+html.has-stick,html.has-stick *{cursor:none!important}
+html.has-stick input,html.has-stick textarea{cursor:text!important}
+.marq{overflow:hidden;margin-top:clamp(3rem,7vw,5rem);margin-left:calc(-1*max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1*max(16px,env(safe-area-inset-right,0px)));padding-block:.3rem;border-block:1px solid rgba(150,130,255,.18)}
+.marq-in{display:inline-block;white-space:nowrap;font:800 clamp(2.6rem,9vw,6rem)/1.15 var(--f-display);letter-spacing:.06em;text-transform:uppercase;color:transparent;-webkit-text-stroke:1.5px rgba(139,92,255,.75);will-change:transform;transform:translate3d(-30%,0,0)}
+.marq.b .marq-in{-webkit-text-stroke-color:rgba(53,227,245,.65)}
+.pill{border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--text);padding:.35rem .9rem;font:600 .75rem var(--f-display);letter-spacing:.06em;cursor:pointer;min-height:2rem}
+.pill:hover{border-color:var(--cyan);color:var(--cyan)}
+@keyframes rise{from{opacity:.25;transform:translateY(46px)}}
+@keyframes flick{0%,17%,21%,58%,100%{opacity:1}19%,23%,56%{opacity:.35}}
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline:view()){
+    .rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+  }
+  h1 .l2{animation:flick 1.8s .4s 1 both}
+}
+@media (prefers-reduced-motion:reduce){#trail{display:none}}
+
+@media (max-width:860px){
+  .hero,.split,.buy,.done-grid{grid-template-columns:minmax(0,1fr)}
+  .hero-art{justify-self:start}
+  .zones{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .zpanel{grid-template-columns:minmax(0,1fr)}
+  .zhead{border-right:0;border-bottom:1px solid var(--line)}
+  .spanel{grid-template-columns:minmax(0,1fr)}
+  .stub{border-right:0;border-bottom:1px dashed var(--line)}
+  .pair{grid-template-columns:minmax(0,1fr)}
+  .swipe{display:block}
+  .ev{grid-template-columns:minmax(0,1fr)}
+  .date{width:auto;display:flex;align-items:baseline;justify-content:center;gap:.7rem;padding:.5rem}
+  .date b{font-size:1.9rem}
+}
+</style>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<canvas id="trail" aria-hidden="true"></canvas>
+<div id="stick" aria-hidden="true"></div>
+
+<header class="wrap top">
+  <a class="mark" href="#top">Silent <span>Overture</span></a>
+  <nav aria-label="页面导航">
+    <a href="#members">成员 MEMBERS</a>
+    <a href="#events">演出 EVENTS</a>
+    <a href="#space">空间 SPACE</a>
+    <a href="#goods">周边 GOODS</a>
+    <a href="#tickets">购票 TICKETS</a>
+  </nav>
+</header>
+
+  <section class="wrap hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Fan concept site · Digital idol project</p>
+      <h1><span class="l1">Enter the</span><span class="l2">Overture.</span></h1>
+      <p class="lede">欢迎来到 Silent Overture 的霓虹宇宙。与 Thera、Hera、Dawn、Upi 一起,进入音乐、光影与未来交织的现场。第一场,设在一座建成后从未开业的商场里。</p>
+      <div class="cta-row">
+        <a class="btn" href="#events">探索演出 ↗</a>
+        <a class="btn ghost" href="#members">认识成员</a>
+      </div>
+      <div class="count" role="timer" aria-label="距离 11 月 8 日 Neon Live 开演的时间">
+        <div><b id="cd-d">--</b><span>DAYS</span></div>
+        <div><b id="cd-h">--</b><span>HRS</span></div>
+        <div><b id="cd-m">--</b><span>MIN</span></div>
+        <div><b id="cd-s">--</b><span>SEC</span></div>
+      </div>
+      <p class="cap">距 NOV 08 · Neon Live 开演(时间为示例)</p>
+    </div>
+    <figure class="hero-art">
+      <div class="frame">
+        <img src="assets/poster.jpg" width="900" height="1178" alt="SILENT OVERTURE 主视觉海报:四位成员站在霓虹舞台前">
+        <span class="tag">CONCEPT ART</span>
+      </div>
+      <span class="spark" style="right:-6px;top:-10px;color:var(--cyan)" aria-hidden="true">✦</span>
+      <span class="spark" style="left:-8px;bottom:34%;color:var(--magenta)" aria-hidden="true">✧</span>
+    </figure>
+  </section>
+
+  <div class="wrap logo">
+    <div class="big">Silent Overture</div>
+    <div class="tagl">LIGHT · SOUND · FUTURE</div>
+    <div class="zhn">未启之音</div>
+    <div class="div" aria-hidden="true"><i>✦</i><i>✧</i><i>⌁</i><i>✦</i></div>
+    <canvas id="band" role="img" aria-label="霓虹声波,会随指针移动变高"></canvas>
+  </div>
+
+  <div class="wrap">
+    <dl class="facts">
+      <div class="glass"><dt>NEON LIVE</dt><dd>11.08 周日<small>日期待最终确认</small></dd></div>
+      <div class="glass"><dt>OPEN</dt><dd>18:30 开放探索<small>19:00 开演 · 示例时间</small></dd></div>
+      <div class="glass"><dt>SHOW</dt><dd>正演 60 分钟<small>演后预留 15 分钟拍照离场</small></dd></div>
+      <div class="glass"><dt>PLACE</dt><dd>东方国贸新天地<small>上海闵行华漕 · 中庭主舞台</small></dd></div>
+    </dl>
+  </div>
+
+  <div class="marq" aria-hidden="true"><div class="marq-in" data-dir="-1" data-text="Light ✦ Sound ✦ Future ✦ "></div></div>
+
+  <section class="wrap sec" id="story">
+    <p class="eyebrow">Story · 演出故事</p>
+    <h2>《未启之音》</h2>
+    <div class="split">
+      <div>
+        <ol class="beats">
+          <li class="glass"><span class="n">1</span><div>
+            <h3>被遗忘的舞台</h3><p class="ko">잊혀진 무대</p>
+            <p class="d">地下女团发现一座建成后从未开业的商场。她们利用空旷中庭与高层回廊,把沉寂的建筑改造成一次秘密公演的场地。</p>
+          </div></li>
+          <li class="glass"><span class="n">2</span><div>
+            <h3>唤醒沉睡的空间</h3><p class="ko">잠든 공간 깨우기</p>
+            <p class="d">观众从旧入口开始探索,寻找歌词与光点线索。店铺和地面装置逐步亮起,声音引导观众前往 04 区,等待团队登场。</p>
+          </div></li>
+          <li class="glass"><span class="n">3</span><div>
+            <h3>观众共同完成第一次开幕</h3><p class="ko">관객이 함께 완성하는 첫 개막</p>
+            <p class="d">四名成员在主舞台登场。观众在一层座位区观看,用荧光棒或 VR 控制器应援,灯光与投影随音乐和互动输入变化。终章后,旧招牌亮起「未启之音」。</p>
+          </div></li>
+        </ol>
+        <div class="pull"><b>团名:尚未奏响的序曲</b><span>아직 연주되지 않은 서곡. 들리기를 기다리는 꿈을 담는다.</span></div>
+      </div>
+      <figure class="photo tall">
+        <img src="assets/concept-atrium.jpg" width="1600" height="900" loading="lazy" alt="阳光穿过玻璃穹顶,照进斑驳的多层商场中庭">
+        <figcaption class="cap">概念视觉 · 沉寂的中庭,不是现场照片</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wrap sec" id="members">
+    <p class="eyebrow">Members · 团队介绍</p>
+    <h2>四种光芒,同一个舞台</h2>
+    <p class="sub">点一张卡片,把她的颜色设为你的应援色。它会出现在下面订票后的电子票上。</p>
+    <div class="cast" id="castgrid">
+      <button type="button" class="card glass" aria-pressed="false" style="--c:#FFD84D" data-name="THERA" data-c="#FFD84D">
+        <span class="ph"><img src="assets/thera.jpg" width="300" height="374" loading="lazy" alt="THERA:金色尖发,举起手臂"><span class="num">01</span></span>
+        <span class="body"><h3>Thera</h3><span class="role">STAGE ENERGY</span>
+        <span class="q">元气开朗,舞台活力担当。</span><span class="ko">활기찬 성격, 무대 에너지 담당</span><span class="chip">SUNSHINE</span></span>
+      </button>
+      <button type="button" class="card glass" aria-pressed="false" style="--c:#9B6BFF" data-name="HERA" data-c="#9B6BFF">
+        <span class="ph"><img src="assets/hera.jpg" width="300" height="374" loading="lazy" alt="HERA:黑色马尾,戴白色耳机,紫色眼睛"><span class="num">02</span></span>
+        <span class="body"><h3>Hera</h3><span class="role">ARRANGER</span>
+        <span class="q">冷静内敛,编曲技术主力。</span><span class="ko">차분한 성격, 편곡 담당</span><span class="chip">RHYTHM</span></span>
+      </button>
+      <button type="button" class="card glass" aria-pressed="true" style="--c:#FF5C93" data-name="DAWN" data-c="#FF5C93">
+        <span class="ph"><img src="assets/dawn.jpg" width="300" height="374" loading="lazy" alt="DAWN:白色到红色渐变的双马尾,蓝色眼睛"><span class="num">03</span></span>
+        <span class="body"><h3>Dawn</h3><span class="role">CENTER VOCAL</span>
+        <span class="q">热情耀眼,团队中心主唱。</span><span class="ko">열정적인 팀의 메인 보컬</span><span class="chip">HEART</span></span>
+      </button>
+      <button type="button" class="card glass" aria-pressed="false" style="--c:#35E0F0" data-name="UPI" data-c="#35E0F0">
+        <span class="ph"><img src="assets/upi.jpg" width="300" height="374" loading="lazy" alt="UPI:黑色短发,戴猫耳耳机"><span class="num">04</span></span>
+        <span class="body"><h3>Upi</h3><span class="role">STAGE CONTROL</span>
+        <span class="q">沉稳寡言,协助舞台控场。</span><span class="ko">차분한 성격, 무대 운영 보조</span><span class="chip">STYLE</span></span>
+      </button>
+    </div>
+    <p class="cheer"><i aria-hidden="true"></i><span id="cheerlbl">应援色 · DAWN</span><button type="button" class="pill" id="stickoff" hidden>恢复普通指针</button></p>
+    <p class="cap" id="fxhint" aria-live="polite">点一张成员卡片,指针会变成她的应援棒,拖尾换成她的颜色。</p>
+  </section>
+
+  <section class="wrap sec" id="events">
+    <p class="eyebrow">Live events · 演出</p>
+    <h2>即将发生的现场</h2>
+    <div class="events">
+      <article class="ev glass">
+        <div class="date"><small>NOV</small><b>08</b></div>
+        <div>
+          <h3>Silent Overture · Neon Live</h3>
+          <p class="meta">MAIN STAGE · 04 区中庭主舞台</p>
+          <p class="d">四位成员在中庭主舞台登场,观众在一层座位区用荧光棒或 VR 控制器应援。入场信息待公布,页面里的时间为示例。</p>
+          <a class="btn" href="#tickets">选择票档 ↗</a>
+        </div>
+      </article>
+      <article class="ev glass">
+        <div class="date"><small>NOV</small><b>22</b></div>
+        <div>
+          <h3>Memory Street Pop-up</h3>
+          <p class="meta">LIMITED POP-UP · 02 区记忆街区</p>
+          <p class="d">限时快闪。周边摊位、饮品小食和休息桌,不含公演座位。示例开放时间 12:00–18:00。</p>
+          <a class="btn ghost" href="#tickets">快闪登记 ↗</a>
+        </div>
+      </article>
+    </div>
+
+    <h3 class="sub2">Neon Live · 60 分钟,六个段落</h3>
+    <p class="sub" style="margin-top:.3rem">按时长画成一条横轴,条越宽,段落越长。点任意一段,看画面、观众互动和幕后控制。</p>
+    <div class="rail">
+      <div class="railin">
+        <div class="bar" id="bar" role="group" aria-label="演出时间轴"></div>
+        <div class="ticks" aria-hidden="true" id="ticks"></div>
+      </div>
+    </div>
+    <p class="swipe">横条可以左右滑动</p>
+    <div class="spanel glass" id="spanel" aria-live="polite"></div>
+  </section>
+
+  <section class="wrap sec" id="space">
+    <p class="eyebrow">Space · 原建筑与五区</p>
+    <h2>闵行华漕东方国贸新天地</h2>
+    <div class="split">
+      <div class="prose">
+        <p>这座建筑原规划为大型商业综合体:一至四层安排购物、餐饮与娱乐,五层以上配套酒店。原稿资料记录土建完成于 2014 年,之后没有开业。</p>
+        <p>提案保留建筑体量和外立面,只在入口附加主题标识、单张灯箱和五区导览。外围用声波与歌词图形,成员的形象集中在 04 区。</p>
+      </div>
+      <dl class="archive glass">
+        <div><dt>原规划</dt><dd>大型商业综合体</dd></div>
+        <div><dt>1–4 层</dt><dd>购物 · 餐饮 · 娱乐</dd></div>
+        <div><dt>5 层以上</dt><dd>酒店</dd></div>
+        <div><dt>土建完成</dt><dd>2014(原稿资料)</dd></div>
+        <div><dt>状态</dt><dd>建成后从未开业</dd></div>
+        <div><dt>本页活动</dt><dd>课程概念提案</dd></div>
+      </dl>
+    </div>
+    <div class="pair">
+      <figure class="photo"><img src="assets/exterior.jpg" width="1125" height="615" loading="lazy" alt="沿河的白色欧式风格大型建筑外观"><figcaption class="cap">原建筑外观</figcaption></figure>
+      <figure class="photo"><img src="assets/atrium-real.jpg" width="593" height="693" loading="lazy" alt="从高处俯拍的空旷中庭,钢结构玻璃顶下停着几辆车"><figcaption class="cap">原中庭</figcaption></figure>
+    </div>
+
+    <h3 class="sub2" id="zones">五区:一层观演,上层拍照</h3>
+    <p class="sub" style="margin-top:.3rem">01–04 区在一层,05 区是高层回廊。开演前 5 分钟回到 04 区就座,05 区建议安排在演前或演后。</p>
+    <div class="seg" role="group" aria-label="切换示意图视角">
+      <button type="button" id="v-front" aria-pressed="true">正视图</button>
+      <button type="button" id="v-bird" aria-pressed="false">俯瞰图</button>
+    </div>
+    <div class="mapbox"><img id="mapimg" src="assets/map-front.jpg" width="1600" height="800" loading="lazy" alt="五区分布的概念示意图"></div>
+    <p class="cap">功能关系示意,不是实测图 · 기능 관계 개념도, 실측 도면 아님</p>
+    <ul class="zones" id="zonebtns"></ul>
+    <div class="zpanel glass" id="zpanel" aria-live="polite"></div>
+  </section>
+
+  <div class="marq b" aria-hidden="true"><div class="marq-in" data-dir="1" data-text="Silent Overture ✧ 未启之音 ✧ "></div></div>
+
+  <section class="wrap sec" id="goods">
+    <p class="eyebrow">Official goods · 官方周边</p>
+    <h2>把光带回家</h2>
+    <p class="sub">周边摊位在 02 区记忆街区。价格为示例,购买方式待公布。</p>
+    <div class="goods">
+      <article class="good glass">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="6" width="24" height="36" rx="4"/><path d="M24 17l2.2 4.6 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5-3.6-3.5 5-.7z"/></svg>
+        <h3>Random Member Card</h3>
+        <p>随机抽取一位成员的收藏卡。</p>
+        <p class="pr">₩5,000</p>
+      </article>
+      <article class="good glass">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M30 6l12 12-4 4-12-12z"/><path d="M26 14L8 40"/><path d="M33 21L12 44"/></svg>
+        <h3>Neon Light Stick</h3>
+        <p>紫蓝渐变的官方荧光棒,现场应援用。</p>
+        <p class="pr">₩38,000</p>
+      </article>
+      <article class="good glass">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M17 5h14a3 3 0 013 3v25a3 3 0 01-3 3H17a3 3 0 01-3-3V8a3 3 0 013-3z"/><path d="M10 42h28"/><path d="M24 36v6"/></svg>
+        <h3>Limited Acrylic Stand</h3>
+        <p>限定亚克力立牌。</p>
+        <p class="pr">₩12,000</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap cta">
+    <h2>准备好进入 Silent Overture 了吗?</h2>
+    <a class="btn" href="#tickets">查看活动与购票信息 ↗</a>
+  </section>
+
+  <section class="wrap sec" id="tickets">
+    <p class="eyebrow">Tickets · 온라인 티켓 예매</p>
+    <h2>选一个参与方式</h2>
+    <form class="buy" id="orderform" novalidate>
+      <div>
+        <fieldset id="tiers">
+          <legend class="eyebrow">票档(示例票价)</legend>
+          <label class="tier"><input type="radio" name="tier" value="std" checked><b>Neon Live · 现场座席</b><span class="pr">₩35,000</span><small>11.08 · 04 区中庭主舞台的座位。含荧光棒领取和五区导览。</small></label>
+          <label class="tier"><input type="radio" name="tier" value="vr"><b>Neon Live · 座席 + VR 体验</b><span class="pr">₩48,000</span><small>11.08 · 在座席票基础上增加一次头显体验:戴上设备,从第一视角进入五区。</small></label>
+          <label class="tier"><input type="radio" name="tier" value="pop"><b>Memory Street Pop-up · 入场登记</b><span class="pr">免费</span><small>11.22 · 02 区记忆街区限时快闪。不含公演座位。</small></label>
+        </fieldset>
+        <div class="fields">
+          <div class="field"><label for="f-name">观演人姓名</label><input id="f-name" name="name" autocomplete="name" required maxlength="30" placeholder="例如:林夏"></div>
+          <div class="field"><label for="f-mail">接收确认信息的邮箱</label><input id="f-mail" name="email" type="email" autocomplete="email" required maxlength="80" placeholder="name@example.com"></div>
+          <div class="field"><label for="f-tel">手机号(选填,用于短信预览)</label><input id="f-tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" pattern="[0-9+\-\s]{6,20}" placeholder="选填"><small id="privacy">邮箱和手机号只用来生成下面的预览,页面不会保存,也不会发给任何人。</small></div>
+        </div>
+      </div>
+      <div class="sum glass">
+        <dl>
+          <div><dt>票档</dt><dd id="s-name">现场座席</dd></div>
+          <div><dt>数量</dt><dd id="s-qty">1 张</dd></div>
+          <div><dt>场次</dt><dd id="s-when">2026.11.08 19:00</dd></div>
+          <div class="total"><dt>合计</dt><dd id="s-total">₩35,000</dd></div>
+        </dl>
+        <div class="qrow">
+          <span class="eyebrow m">张数(最多 4 张)</span>
+          <div class="qty">
+            <button type="button" id="q-minus" aria-label="减少一张">−</button>
+            <output id="qty" aria-live="polite">1</output>
+            <button type="button" id="q-plus" aria-label="增加一张">+</button>
+          </div>
+        </div>
+        <button type="submit" class="btn" id="buy">提交演示订单</button>
+        <p class="demo">演示页面。没有真实售票、扣款或活动。</p>
+      </div>
+    </form>
+
+    <div class="done" id="done" hidden>
+      <div class="done-head">
+        <h3 id="done-h" tabindex="-1">购买成功 · 구매 완료 · Purchase complete</h3>
+        <p id="done-sub"></p>
+      </div>
+      <div class="done-grid">
+        <div class="stub">
+          <div class="eticket">
+            <div class="top2"><span>E-TICKET · 示例</span><span id="e-id"></span></div>
+            <h4 id="e-tier"></h4>
+            <dl>
+              <div><dt>观演人</dt><dd id="e-name"></dd></div>
+              <div><dt>场次</dt><dd id="e-when"></dd></div>
+              <div><dt>入口</dt><dd id="e-gate"></dd></div>
+              <div><dt>座位</dt><dd id="e-seat"></dd></div>
+              <div><dt>应援色</dt><dd id="e-cheer"></dd></div>
+            </dl>
+            <div class="barcode" aria-hidden="true"></div>
+          </div>
+          <p class="ex">示例电子票,条码不可扫描。</p>
+        </div>
+        <div class="msgs">
+          <div class="tabs" role="tablist" aria-label="确认信息预览">
+            <button type="button" role="tab" id="tab-mail" aria-selected="true" aria-controls="pane-mail">邮件</button>
+            <button type="button" role="tab" id="tab-sms" aria-selected="false" aria-controls="pane-sms">短信</button>
+          </div>
+          <div id="pane-mail" role="tabpanel" aria-labelledby="tab-mail"></div>
+          <div id="pane-sms" role="tabpanel" aria-labelledby="tab-sms" hidden></div>
+          <p class="status" id="status"></p>
+        </div>
+      </div>
+      <button type="button" class="btn ghost again" id="again">再订一单</button>
+    </div>
+
+    <div class="faq">
+      <details>
+        <summary>没有头显可以参与吗?</summary>
+        <p>可以。现场座席票在 04 区观看公演。没有头显时,VR 互动用键盘和鼠标演示同样的事件。远程多人观演是后续扩展,目前不提供。</p>
+      </details>
+      <details>
+        <summary>什么时候到场?</summary>
+        <p>提前 30 分钟开放探索,按 01 到 03 区的顺序走。开演前 5 分钟回到 04 区就座。</p>
+      </details>
+      <details>
+        <summary>05 区什么时候去?</summary>
+        <p>建议演前或演后。演后预留 15 分钟,去高层回廊拍照,再按出口导览离场。屋顶是否开放,以场地可用性确认为准。</p>
+      </details>
+      <details>
+        <summary>这是真的活动吗?</summary>
+        <p>不是。这是课程里的概念提案,日期、票价和订单都是示例,演出和 VR 互动是展演方案,不代表已完成的联网系统。场地是真实存在的建筑,请不要前往。</p>
+      </details>
+    </div>
+  </section>
+
+  <footer class="wrap">
+    <span>© 2026 SILENT OVERTURE · 未启之音 · fan concept website</span>
+    <span>专题设计 2 课程提案。图像为 AI 生成的概念视觉,不是现场照片。</span>
+    <span class="lu">LIGHT UP YOUR OWN UNIVERSE ✦</span>
+  </footer>
+</main>
+
+<script>
+(function(){
+  'use strict';
+  var $=function(s,r){return (r||document).querySelector(s)};
+  var $$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+  function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+  var root=document.documentElement;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ===== EmailJS 设置 =====
+     留空时页面只在本页预览确认邮件和短信。
+     部署到自己的网站后,填入 EmailJS 的三个值,订票后就会真的发邮件。 */
+  var EMAILJS={publicKey:'',serviceId:'',templateId:''};
+  var LIVE=!!(EMAILJS.publicKey&&EMAILJS.serviceId&&EMAILJS.templateId);
+
+  /* ===== neon sound-wave band ===== */
+  var band=$('#band'),B,ptr={x:0,on:false},t0=performance.now(),raf=0,last=0,vis=true;
+  function setup(cv){
+    var r=cv.getBoundingClientRect(),dpr=Math.min(2,window.devicePixelRatio||1);
+    var w=Math.max(1,Math.round(r.width)),h=Math.max(1,Math.round(r.height));
+    cv.width=w*dpr;cv.height=h*dpr;
+    var ctx=cv.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);
+    return{w:w,h:h,ctx:ctx};
+  }
+  function drawBand(now){
+    if(!B)return;
+    var ctx=B.ctx,w=B.w,h=B.h,t=(now-t0)/1000;
+    ctx.clearRect(0,0,w,h);
+    var n=Math.max(12,Math.floor(w/9)),gap=w/n,bw=Math.max(2,gap*0.5);
+    var g=ctx.createLinearGradient(0,0,w,0);
+    g.addColorStop(0,'#35E3F5');g.addColorStop(0.5,'#8B5CFF');g.addColorStop(1,'#F052C8');
+    ctx.fillStyle=g;ctx.shadowColor='rgba(139,92,255,.75)';ctx.shadowBlur=12;
+    ctx.beginPath();
+    for(var i=0;i<n;i++){
+      var u=i/n,x=i*gap+(gap-bw)/2;
+      var a=0.14+0.86*Math.abs(Math.sin(u*11+t*1.5)*Math.cos(u*3.3-t*0.8));
+      if(ptr.on){var dx=x-ptr.x;a+=0.9*Math.exp(-(dx*dx)/(2*80*80))}
+      a=Math.min(1,a);
+      var bh=Math.max(4,a*h*0.9);
+      ctx.rect(x,(h-bh)/2,bw,bh);
+    }
+    ctx.fill();ctx.shadowBlur=0;
+  }
+  function loop(now){raf=requestAnimationFrame(loop);if(now-last<33)return;last=now;drawBand(now)}
+  function start(){if(reduce){drawBand(t0+1500);return}if(!raf&&vis&&!document.hidden)raf=requestAnimationFrame(loop)}
+  function stop(){cancelAnimationFrame(raf);raf=0}
+  band.addEventListener('pointermove',function(e){var r=band.getBoundingClientRect();ptr.x=e.clientX-r.left;ptr.on=true;if(reduce)drawBand(t0+1500)});
+  ['pointerleave','pointercancel'].forEach(function(n){band.addEventListener(n,function(){ptr.on=false;if(reduce)drawBand(t0+1500)})});
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){vis=es[0].isIntersecting;vis?start():stop()}).observe(band)}
+  document.addEventListener('visibilitychange',function(){document.hidden?stop():start()});
+  var rt,lw=0;
+  if('ResizeObserver' in window){new ResizeObserver(function(){var w=band.getBoundingClientRect().width;if(Math.abs(w-lw)<1)return;lw=w;clearTimeout(rt);rt=setTimeout(function(){B=setup(band);drawBand(performance.now())},120)}).observe(band)}
+  B=setup(band);drawBand(performance.now());start();
+
+  /* ===== countdown (NOV 08, 示例时间, 上海时间) ===== */
+  var target=new Date('2026-11-08T19:00:00+08:00').getTime();
+  function pad(n){return String(n).padStart(2,'0')}
+  function tick(){
+    var d=Math.max(0,target-Date.now()),s=Math.floor(d/1000);
+    $('#cd-d').textContent=pad(Math.floor(s/86400));
+    $('#cd-h').textContent=pad(Math.floor(s%86400/3600));
+    $('#cd-m').textContent=pad(Math.floor(s%3600/60));
+    $('#cd-s').textContent=pad(s%60);
+  }
+  tick();setInterval(tick,1000);
+
+  /* ===== zones ===== */
+  var zones=[
+    {n:'01',zh:'旧入口 · 唤醒区',ko:'옛 입구 / 웨이크업 구역',fn:'检票、领取荧光棒和导览。',act:'扳机确认入场,选择导览。',fb:'导览灯亮起,显示五区地图。',note:'选择「开始探索」后,入口灯光与环境声启动,引导观众前往记忆街区。'},
+    {n:'02',zh:'记忆街区',ko:'기억 거리',fn:'周边、餐饮与休憩。',act:'指向店铺标识并确认。',fb:'显示餐饮、周边与休息点信息。',note:'周边摊位提供卡带、明信片、徽章和荧光棒。餐饮点有饮品、小食与休息桌,候餐区避开通往主舞台的通道。'},
+    {n:'03',zh:'儿童 · 轻互动区',ko:'어린이 / 라이트 인터랙션',fn:'光点追踪与应援输入。',act:'选择或踩中光点,完成追踪。',fb:'光点移动,结果汇入舞台光效。',note:'现场使用地面感应输入,VR 使用射线选择,两个入口触发同一个互动事件。'},
+    {n:'04',zh:'中庭主舞台',ko:'중정 메인 무대',fn:'团队公演、座位与应援。',act:'选择座位,挥动应援棒或控制器。',fb:'应援输入改变粒子强度与灯光。',note:'四名成员在中央屏幕与舞台登场。座位面向舞台,保留中央和侧边通道。正式公演统一在这里观看。'},
+    {n:'05',zh:'高层回廊',ko:'상층 회랑',fn:'高层拍照与俯瞰留念。',act:'选拍照位并确认,最后选择出口。',fb:'提示保存画面,复位互动并返回首页。',note:'A 俯瞰拍照位,固定视角记录舞台全景。B 主题文字打卡。C 屋顶备选位,可用时记录城市背景。'}
+  ];
+  var zb=$('#zonebtns'),zp=$('#zpanel');
+  zones.forEach(function(z,i){
+    var li=el('li'),b=el('button','zbtn');b.type='button';b.setAttribute('aria-pressed',i===3?'true':'false');b.dataset.i=i;
+    b.appendChild(el('b',null,z.n));b.appendChild(el('span',null,z.zh));li.appendChild(b);zb.appendChild(li);
+  });
+  function showZone(i){
+    var z=zones[i];
+    $$('.zbtn').forEach(function(b){b.setAttribute('aria-pressed',String(+b.dataset.i===i))});
+    zp.textContent='';
+    var h=el('div','zhead');h.appendChild(el('div','big',z.n));h.appendChild(el('h3',null,z.zh));h.appendChild(el('p',null,z.ko));
+    var d=el('dl','zbody');
+    [['功能',z.fn],['观众操作',z.act],['空间反馈',z.fb],['备注',z.note]].forEach(function(r){var w=el('div');w.appendChild(el('dt',null,r[0]));w.appendChild(el('dd',null,r[1]));d.appendChild(w)});
+    zp.appendChild(h);zp.appendChild(d);
+  }
+  zb.addEventListener('click',function(e){var b=e.target.closest('.zbtn');if(b)showZone(+b.dataset.i)});
+  showZone(3);
+  var mi=$('#mapimg');
+  function view(which){
+    $('#v-front').setAttribute('aria-pressed',String(which==='front'));
+    $('#v-bird').setAttribute('aria-pressed',String(which==='bird'));
+    mi.src=which==='front'?'assets/map-front.jpg':'assets/map-bird.jpg';
+  }
+  $('#v-front').addEventListener('click',function(){view('front')});
+  $('#v-bird').addEventListener('click',function(){view('bird')});
+
+  /* ===== run of show ===== */
+  var segs=[
+    {k:'off',min:30,t:'18:30–19:00',zh:'开放探索',ko:'탐색',show:'观众从旧入口出发,沿 01 到 03 区探索,寻找歌词与光点线索。',act:'领取荧光棒,完成光点追踪。18:55 前回到 04 区就座。',back:'03 区的互动结果汇入舞台光效。'},
+    {k:'c1',min:5,t:'19:00–19:05',zh:'唤醒',ko:'각성',show:'入口亮灯,四名成员登场。',act:'确认就位,进入首曲。',back:'Cue C01,切换开场素材。'},
+    {k:'c2',min:15,t:'19:05–19:20',zh:'记忆',ko:'기억',show:'成员介绍,第一组歌曲。',act:'选择应援色。',back:'音频分析控制声波和灯光。'},
+    {k:'c1',min:8,t:'19:20–19:28',zh:'共鸣',ko:'공명',show:'舞台显示 03 区的互动结果。',act:'挥动控制器或荧光棒。',back:'输入过滤,映射粒子强度。'},
+    {k:'c2',min:15,t:'19:28–19:43',zh:'重启',ko:'재가동',show:'第二组歌曲,节奏增强。',act:'集体应援。',back:'按曲目切换 Cue 与视觉层。'},
+    {k:'c1',min:12,t:'19:43–19:55',zh:'开幕',ko:'개막',show:'主题曲,旧招牌亮起「未启之音」。',act:'和成员共同完成终章。',back:'叠加应援光效与主题文字。'},
+    {k:'c2',min:5,t:'19:55–20:00',zh:'谢幕',ko:'인사',show:'结束画面,恢复导览灯。',act:'散场,准备演后拍照。',back:'结束 Cue,复位互动状态。'},
+    {k:'off',min:15,t:'20:00–20:15',zh:'演后拍照',ko:'공연 후 촬영',show:'去 05 区高层回廊拍照,再按出口导览离场。',act:'选拍照位并确认。',back:'提示保存画面,复位互动并返回首页。'}
+  ];
+  var TOTAL=105,bar=$('#bar'),sp=$('#spanel');
+  segs.forEach(function(s,i){
+    var b=el('button',s.k,s.min>=8?s.zh:s.zh.charAt(0));b.type='button';
+    b.style.flexBasis=(s.min/TOTAL*100)+'%';
+    b.setAttribute('aria-pressed',i===2?'true':'false');b.setAttribute('aria-label',s.t+' '+s.zh+','+s.min+' 分钟');b.dataset.i=i;
+    bar.appendChild(b);
+  });
+  [[0,'18:30'],[30,'19:00'],[90,'20:00'],[105,'20:15']].forEach(function(p){var s=el('span',null,p[1]);s.style.left=(p[0]/TOTAL*100)+'%';$('#ticks').appendChild(s)});
+  function showSeg(i){
+    var s=segs[i];
+    $$('#bar button').forEach(function(b){b.setAttribute('aria-pressed',String(+b.dataset.i===i))});
+    sp.textContent='';
+    var a=el('div');a.appendChild(el('p','t',s.t+' · '+s.min+' 分钟'));a.appendChild(el('h3',null,s.zh));a.appendChild(el('p','t',s.ko));sp.appendChild(a);
+    [['画面与演出',s.show],['观众互动',s.act],['幕后控制',s.back]].forEach(function(r){var w=el('dl');var d=el('div');d.appendChild(el('dt',null,r[0]));d.appendChild(el('dd',null,r[1]));w.appendChild(d);sp.appendChild(w)});
+  }
+  bar.addEventListener('click',function(e){var b=e.target.closest('button');if(b)showSeg(+b.dataset.i)});
+  showSeg(2);
+
+  /* ===== cast / cheer colour ===== */
+  var cheer={name:'DAWN',c:'#FF5C93'};
+  $('#castgrid').addEventListener('click',function(e){
+    var b=e.target.closest('.card');if(!b)return;
+    $$('.card').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});
+    cheer={name:b.dataset.name,c:b.dataset.c};
+    root.style.setProperty('--cheer',cheer.c);
+    $('#cheerlbl').textContent='应援色 · '+cheer.name;
+    var rr=b.getBoundingClientRect();
+    setMember(cheer.name,cheer.c,e.clientX||rr.left+rr.width/2,e.clientY||rr.top+rr.height/2);
+  });
+  root.style.setProperty('--cheer',cheer.c);
+
+  /* ===== effects: scroll ===== */
+  var fine=matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var vh=window.innerHeight;
+  var prog=$('#progress'),orbs=$$('.aurora i'),sTick=false;
+  $$('.sec>.eyebrow,.sec>h2,.sec>.sub,.beats li,.photo,.card,.ev,.good,.facts>div,.cta,.pull,.archive,.tier,.mapbox,.faq').forEach(function(n){n.classList.add('rv')});
+  var marqs=$$('.marq-in');
+  marqs.forEach(function(m){var s='';for(var i=0;i<6;i++)s+=m.dataset.text;m.textContent=s;m.dir=+m.dataset.dir});
+  var par=[{e:$('.hero-art'),f:-0.07},{e:$('.logo .big'),f:0.05}].concat($$('.spark').map(function(s,i){return{e:s,f:i?0.14:-0.12}}));
+  function scrollFx(){
+    sTick=false;
+    var y=window.scrollY,max=Math.max(1,document.documentElement.scrollHeight-vh);
+    prog.style.transform='scaleX('+Math.min(1,y/max).toFixed(4)+')';
+    if(reduce)return;
+    orbs.forEach(function(o,i){o.style.transform='translate3d(0,'+(y*(i===1?-0.06:0.08)).toFixed(1)+'px,0)'});
+    par.forEach(function(p){if(!p.e||p.base==null)return;var c=p.base-y-vh/2;if(c>vh*1.2||c<-vh*1.2)return;p.e.style.transform='translate3d(0,'+(c*p.f).toFixed(1)+'px,0)'});
+    marqs.forEach(function(m){if(m.base==null)return;var c=m.base-y-vh/2;var sh=Math.max(-m.max,Math.min(m.max,c*0.45*m.dir));m.style.transform='translate3d('+(-(m.W-window.innerWidth)/2+sh).toFixed(1)+'px,0,0)'});
+  }
+  function measure(){
+    vh=window.innerHeight;var y=window.scrollY;
+    par.forEach(function(p){if(!p.e)return;p.e.style.transform='none';var r=p.e.getBoundingClientRect();p.base=r.top+y+r.height/2});
+    marqs.forEach(function(m){var r=m.parentElement.getBoundingClientRect();m.base=r.top+y+r.height/2;m.W=m.scrollWidth;m.max=Math.max(0,(m.W-window.innerWidth)/2-24);if(reduce)m.style.transform='translate3d('+(-(m.W-window.innerWidth)/2)+'px,0,0)'});
+    scrollFx();
+  }
+  window.addEventListener('scroll',function(){if(!sTick){sTick=true;requestAnimationFrame(scrollFx)}},{passive:true});
+  var mt;
+  function remeasure(){clearTimeout(mt);mt=setTimeout(measure,150)}
+  window.addEventListener('resize',remeasure);window.addEventListener('load',remeasure);
+  if('ResizeObserver' in window){new ResizeObserver(remeasure).observe(document.body)}
+  measure();
+
+  if(fine&&!reduce){$$('.card').forEach(function(c){
+    c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect(),px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;c.style.setProperty('--ry',(px*10).toFixed(2)+'deg');c.style.setProperty('--rx',(-py*10).toFixed(2)+'deg')});
+    c.addEventListener('pointerleave',function(){c.style.setProperty('--rx','0deg');c.style.setProperty('--ry','0deg')});
+  })}
+
+  /* ===== effects: mouse trail + light-stick cursor ===== */
+  var tcv=$('#trail'),tctx=tcv.getContext('2d'),TW=0,TH=0,parts=[],tRaf=0,lt=0;
+  var trailCols=['#35E3F5','#8B5CFF','#F052C8'];
+  function sizeTrail(){var d=Math.min(1.5,window.devicePixelRatio||1);TW=window.innerWidth;TH=window.innerHeight;tcv.width=Math.round(TW*d);tcv.height=Math.round(TH*d);tcv.style.width=TW+'px';tcv.style.height=TH+'px';tctx.setTransform(d,0,0,d,0,0)}
+  sizeTrail();window.addEventListener('resize',sizeTrail);
+  function lighten(hex,t){var n=parseInt(hex.slice(1),16),r=n>>16,g=(n>>8)&255,b=n&255;return 'rgb('+Math.round(r+(255-r)*t)+','+Math.round(g+(255-g)*t)+','+Math.round(b+(255-b)*t)+')'}
+  function starPath(c,x,y,r){c.moveTo(x,y-r);c.quadraticCurveTo(x,y,x+r,y);c.quadraticCurveTo(x,y,x,y+r);c.quadraticCurveTo(x,y,x-r,y);c.quadraticCurveTo(x,y,x,y-r)}
+  function spawn(x,y,n,burst){
+    if(reduce)return;
+    for(var i=0;i<n;i++){
+      var a=Math.random()*6.2832,sp=burst?(1.4+Math.random()*3.8):(Math.random()*0.7);
+      parts.push({x:x+(Math.random()-.5)*4,y:y+(Math.random()-.5)*4,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp+(burst?0:0.12),life:0,max:(burst?650:520)+Math.random()*420,s:(burst?2.5:2)+Math.random()*3.5,c:trailCols[(Math.random()*trailCols.length)|0],star:Math.random()<0.3});
+    }
+    if(parts.length>220)parts.splice(0,parts.length-220);
+    if(!tRaf)tRaf=requestAnimationFrame(trailFrame);
+  }
+  function trailFrame(now){
+    tRaf=0;var dt=Math.min(40,now-(lt||now));lt=now;
+    tctx.clearRect(0,0,TW,TH);tctx.globalCompositeOperation='lighter';tctx.shadowBlur=8;
+    for(var i=parts.length-1;i>=0;i--){
+      var p=parts[i];p.life+=dt;if(p.life>=p.max){parts.splice(i,1);continue}
+      var k=1-p.life/p.max;p.x+=p.vx*dt/16;p.y+=p.vy*dt/16;p.vx*=0.985;p.vy*=0.985;
+      var r=p.s*(0.35+0.65*k);
+      tctx.globalAlpha=Math.min(1,k*1.2)*0.9;tctx.fillStyle=p.c;tctx.shadowColor=p.c;
+      tctx.beginPath();if(p.star){starPath(tctx,p.x,p.y,r*2.3)}else{tctx.arc(p.x,p.y,r,0,6.2832)}
+      tctx.fill();
+    }
+    tctx.globalAlpha=1;tctx.shadowBlur=0;tctx.globalCompositeOperation='source-over';
+    if(parts.length){tRaf=requestAnimationFrame(trailFrame)}else{lt=0;tctx.clearRect(0,0,TW,TH)}
+  }
+
+  var stick=$('#stick'),stickOn=false,stickShown=false,svgEl=null,swayT=0,lx=-1,ly=-1;
+  function starPoly(cx,cy,R,r,n){var p=[];for(var i=0;i<n*2;i++){var rad=i%2?r:R,a=-Math.PI/2+i*Math.PI/n;p.push((cx+Math.cos(a)*rad).toFixed(1)+','+(cy+Math.sin(a)*rad).toFixed(1))}return p.join(' ')}
+  var HEADS={
+    THERA:'<polygon points="'+starPoly(35,37,29,12.5,5)+'"/>',
+    HERA:'<circle cx="35" cy="36" r="19" fill="none" stroke="currentColor" stroke-width="9"/><circle cx="35" cy="36" r="6.5"/>',
+    DAWN:'<path d="M35 60C14 44 8 34 8 25a14 14 0 0 1 27-5 14 14 0 0 1 27 5c0 9-6 19-27 35z"/>',
+    UPI:'<path d="M13 31L10 8l16 10a22 22 0 0 1 18 0L60 8l-3 23a22 22 0 1 1-44 0z"/>'
+  };
+  function stickSVG(name,c){
+    return '<svg width="70" height="200" viewBox="0 0 70 200" style="color:'+c+'"><g fill="'+c+'" style="filter:drop-shadow(0 0 6px '+c+') drop-shadow(0 0 16px '+c+')">'+(HEADS[name]||HEADS.DAWN)+'</g><circle cx="35" cy="36" r="6" fill="#fff" opacity=".6"/><rect x="31" y="60" width="8" height="130" rx="4" fill="#EEF0FF" opacity=".93"/><rect x="29.5" y="130" width="11" height="32" rx="3" fill="#161A45"/></svg>';
+  }
+  function restRot(){if(svgEl)svgEl.style.transform='rotate(-24deg)'}
+  function moveStick(x,y,vx){
+    if(!stickShown){stick.style.visibility='visible';stickShown=true}
+    stick.style.transform='translate3d('+x+'px,'+y+'px,0)';
+    if(svgEl&&!reduce){svgEl.style.transform='rotate('+(-24+Math.max(-26,Math.min(26,vx*0.9)))+'deg)';clearTimeout(swayT);swayT=setTimeout(restRot,90)}
+  }
+  function activateStick(name,c){
+    stick.innerHTML=stickSVG(name,c);svgEl=stick.firstChild;restRot();
+    stickOn=true;stick.style.opacity='1';root.classList.add('has-stick');$('#stickoff').hidden=false;
+    if(lx>=0)moveStick(lx,ly,0);
+  }
+  function deactivateStick(){
+    stickOn=false;stick.innerHTML='';svgEl=null;stickShown=false;stick.style.visibility='hidden';
+    root.classList.remove('has-stick');$('#stickoff').hidden=true;
+    $('#fxhint').textContent='指针已恢复。点一张成员卡片,可以再换上应援棒。';
+  }
+  function setMember(name,c,x,y){
+    trailCols=[c,lighten(c,.45),'#FFFFFF'];
+    var hint=$('#fxhint');
+    if(fine){activateStick(name,c);hint.textContent=reduce?'指针已换成 '+name+' 的应援棒。按 Esc 或旁边的按钮可以恢复。':'指针已换成 '+name+' 的应援棒,拖尾也变成她的颜色。按 Esc 或旁边的按钮可以恢复。'}
+    else{hint.textContent='应援色换成了 '+name+'。点击页面任意位置,会迸出她颜色的光点。'}
+    spawn(x,y,28,true);
+  }
+  if(!fine)$('#fxhint').textContent='点一张成员卡片,换成她的应援色。之后点击页面任意位置,会迸出她颜色的光点。';
+  document.addEventListener('pointermove',function(e){
+    if(e.pointerType==='touch')return;
+    var x=e.clientX,y=e.clientY;
+    if(stickOn)moveStick(x,y,lx<0?0:x-lx);
+    if(!reduce&&lx>=0){var dx=x-lx,dy=y-ly,d=Math.hypot(dx,dy),steps=Math.min(8,Math.max(1,Math.floor(d/7)));for(var s=1;s<=steps;s++)spawn(lx+dx*s/steps,ly+dy*s/steps,1,false)}
+    lx=x;ly=y;
+  },{passive:true});
+  document.addEventListener('pointerdown',function(e){
+    if(e.target.closest&&e.target.closest('input,textarea,select'))return;
+    spawn(e.clientX,e.clientY,e.pointerType==='touch'?22:16,true);
+  },{passive:true});
+  document.addEventListener('pointerover',function(e){
+    if(!stickOn)return;
+    stick.style.opacity=(e.target.closest&&e.target.closest('input,textarea,select'))?'0':'1';
+  });
+  root.addEventListener('mouseleave',function(){if(stickOn)stick.style.opacity='0'});
+  root.addEventListener('mouseenter',function(){if(stickOn)stick.style.opacity='1'});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&stickOn)deactivateStick()});
+  $('#stickoff').addEventListener('click',deactivateStick);
+
+  /* ===== tickets ===== */
+  var EVENTS={
+    live:{short:'2026.11.08 19:00',long:'2026年11月8日(周日)19:00',gate:'01 区检票',
+      tips:['18:30 起开放探索,从 01 区检票并领取荧光棒。','19:00 开演,请在 18:55 前回到 04 区就座。','演后预留 15 分钟,可去 05 区高层回廊拍照。']},
+    pop:{short:'2026.11.22 12:00–18:00',long:'2026年11月22日(周日)12:00–18:00(示例)',gate:'01 区登记',
+      tips:['限时快闪,记忆街区(02 区)开放,示例时间 12:00–18:00。','周边摊位、饮品小食和休息桌都在这里。','不含公演座位。']}
+  };
+  var TIERS={
+    std:{name:'Neon Live · 现场座席',ev:'live',price:35000,seat:true},
+    vr:{name:'Neon Live · 座席 + VR 体验',ev:'live',price:48000,seat:true},
+    pop:{name:'Memory Street Pop-up · 入场登记',ev:'pop',price:0,seat:false}
+  };
+  var qty=1,form=$('#orderform');
+  function money(n){return n===0?'免费':'₩'+n.toLocaleString('en-US')}
+  function curKey(){return $('input[name="tier"]:checked').value}
+  function render(){
+    var t=TIERS[curKey()];
+    $('#s-name').textContent=t.name;$('#s-qty').textContent=qty+' 张';$('#qty').textContent=qty;
+    $('#s-when').textContent=EVENTS[t.ev].short;$('#s-total').textContent=money(t.price*qty);
+  }
+  $$('input[name="tier"]').forEach(function(r){r.addEventListener('change',render)});
+  $('#q-minus').addEventListener('click',function(){if(qty>1){qty--;render()}});
+  $('#q-plus').addEventListener('click',function(){if(qty<4){qty++;render()}});
+  $('#privacy').textContent=LIVE?'邮箱用于发送确认邮件。手机号只用于下面的短信预览,不会发送。':'邮箱和手机号只用来生成下面的预览,页面不会保存,也不会发给任何人。';
+  render();
+
+  function makeOrder(){
+    var key=curKey(),t=TIERS[key];
+    var id='SO-'+Math.random().toString(36).slice(2,8).toUpperCase();
+    var n=parseInt(id.slice(3),36)||7;
+    var seat=t.seat?'':'无座位(自由参观)';
+    if(t.seat){var row=1+n%14,s0=1+Math.floor(n/14)%18;seat='04 区 · 第 '+row+' 排 '+s0+(qty>1?'–'+(s0+qty-1):'')+' 座'}
+    return{id:id,key:key,tier:t,ev:EVENTS[t.ev],qty:qty,total:t.price*qty,name:$('#f-name').value.trim(),email:$('#f-mail').value.trim(),tel:$('#f-tel').value.trim(),seat:seat,cheer:cheer.name};
+  }
+  function compose(o){
+    var subject='【未启之音】订单 '+o.id+' 已确认(演示)';
+    var rows=[['订单号',o.id],['票档',o.tier.name+' × '+o.qty],['合计',money(o.total)],['场次',o.ev.long],['座位',o.seat],['应援色',o.cheer]];
+    var fine='这是课程概念提案里的演示订单,没有真实活动和扣款,请勿前往场地。';
+    var sms='【未启之音】订单'+o.id+'已确认:'+o.tier.name+'×'+o.qty+','+o.ev.long+'。演示短信,非真实订单。';
+    var text='你好 '+o.name+',\n你的订单已确认(演示)。\n\n'+rows.map(function(r){return r[0]+':'+r[1]}).join('\n')+'\n\n入场须知:\n- '+o.ev.tips.join('\n- ')+'\n\n'+fine;
+    return{subject:subject,rows:rows,tips:o.ev.tips,fine:fine,sms:sms,text:text};
+  }
+  function fill(o,m){
+    $('#done-sub').textContent='订单 '+o.id+' · 下面是确认邮件和短信的预览';
+    $('#e-id').textContent=o.id;$('#e-tier').textContent=o.tier.name;$('#e-name').textContent=o.name;$('#e-when').textContent=o.ev.short;
+    $('#e-gate').textContent=o.ev.gate;$('#e-seat').textContent=o.seat;$('#e-cheer').textContent=o.cheer;
+    $('.eticket .top2').style.background=cheer.c;
+
+    var pm=$('#pane-mail');pm.textContent='';
+    var mail=el('div','mail'),hd=el('div','hd');
+    [['发件人','SILENT OVERTURE 票务 <tickets@silent-overture.example>'],['收件人',o.email],['主题',m.subject]].forEach(function(r){var p=el('p');p.appendChild(el('span',null,r[0]+' '));p.appendChild(el('b',null,r[1]));hd.appendChild(p)});
+    var bd=el('div','bd');
+    bd.appendChild(el('p',null,'你好 '+o.name+','));bd.appendChild(el('p',null,'你的订单已确认(演示)。'));
+    var tb=el('table');m.rows.forEach(function(r){var tr=el('tr');tr.appendChild(el('td',null,r[0]));tr.appendChild(el('td',null,r[1]));tb.appendChild(tr)});bd.appendChild(tb);
+    bd.appendChild(el('p',null,'入场须知'));var ul=el('ul');m.tips.forEach(function(t){ul.appendChild(el('li',null,t))});bd.appendChild(ul);
+    bd.appendChild(el('p','fine',m.fine));
+    mail.appendChild(hd);mail.appendChild(bd);pm.appendChild(mail);
+
+    var ps=$('#pane-sms');ps.textContent='';
+    var sw=el('div','sms');sw.appendChild(el('p','who','收件人 '+(o.tel||'(未填写手机号)')+' · 模拟预览'));sw.appendChild(el('p','bub',m.sms));ps.appendChild(sw);
+  }
+  function setStatus(txt,ok){var s=$('#status');s.textContent=txt;s.className='status'+(ok?' ok':'')}
+  function loadSdk(){
+    if(window.emailjs)return Promise.resolve();
+    return new Promise(function(res,rej){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js';s.onload=res;s.onerror=function(){rej(new Error('sdk'))};document.head.appendChild(s)});
+  }
+  function sendReal(o,m){
+    return loadSdk().then(function(){
+      return window.emailjs.send(EMAILJS.serviceId,EMAILJS.templateId,{
+        to_name:o.name,to_email:o.email,order_id:o.id,ticket_name:o.tier.name,qty:String(o.qty),total:money(o.total),
+        show_time:o.ev.long,seats:o.seat,cheer:o.cheer,subject:m.subject,message:m.text
+      },{publicKey:EMAILJS.publicKey});
+    });
+  }
+  function selectTab(which){
+    var mail=which==='mail';
+    $('#tab-mail').setAttribute('aria-selected',String(mail));$('#tab-sms').setAttribute('aria-selected',String(!mail));
+    $('#pane-mail').hidden=!mail;$('#pane-sms').hidden=mail;
+  }
+  $('#tab-mail').addEventListener('click',function(){selectTab('mail')});
+  $('#tab-sms').addEventListener('click',function(){selectTab('sms')});
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!form.reportValidity())return;
+    var o=makeOrder(),m=compose(o);
+    fill(o,m);selectTab('mail');
+    var d=$('#done');d.hidden=false;
+    if(LIVE){
+      setStatus('正在发送确认邮件到 '+o.email+' …',false);
+      sendReal(o,m).then(function(){setStatus('确认邮件已发送到 '+o.email+'。短信只做了预览,没有发送。',true)})
+        .catch(function(){setStatus('邮件没有发送成功。请检查 EmailJS 的设置,或稍后再试。',false)});
+    }else{
+      setStatus('演示模式:邮件和短信只在这里预览,没有真正发出。部署版填入 EmailJS 设置后,邮件可以真实发送。',false);
+    }
+    d.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+    $('#done-h').focus({preventScroll:true});
+  });
+  $('#again').addEventListener('click',function(){
+    $('#done').hidden=true;form.reset();qty=1;render();
+    $('#tickets').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+  });
+})();
+</script>
+
+</body></html>
