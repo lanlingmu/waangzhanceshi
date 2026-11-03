@@ -1009,4 +1009,36 @@ html.has-stick input,html.has-stick textarea{cursor:text!important}
 })();
 </script>
 
+<nav class="version-switch" aria-label="版本切换">
+  <a href="../">ver.1</a>
+  <a href="./" aria-current="page">ver.2</a>
+</nav>
+
+<style>
+.version-switch {
+  position: fixed;
+  right: 16px;
+  bottom: 20px;
+  z-index: 9999;
+  display: flex;
+  gap: 4px;
+  padding: 5px;
+  border: 1px solid #bbb;
+  border-radius: 30px;
+  background: #fff;
+  box-shadow: 0 4px 16px #0002;
+  font: 14px/1.5 sans-serif;
+}
+.version-switch a {
+  padding: 7px 14px;
+  border-radius: 24px;
+  color: #333;
+  text-decoration: none;
+}
+.version-switch a[aria-current="page"] {
+  background: #2338e0;
+  color: #fff;
+}
+</style>
+  
 </body></html>
