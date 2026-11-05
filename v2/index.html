@@ -482,7 +482,7 @@ html.loading{overflow:hidden}
         <div><b id="cd-m">--</b><span>MIN</span></div>
         <div><b id="cd-s">--</b><span>SEC</span></div>
       </div>
-      <p class="cap">距 NOV 08 · Neon Live 开演(时间为示例)</p>
+      <p class="cap">距 DEC 16 · Neon Live 开演(时间为示例)</p>
     </div>
     <figure class="hero-art">
       <div class="frame">
@@ -855,8 +855,8 @@ html.loading{overflow:hidden}
   if('ResizeObserver' in window){new ResizeObserver(function(){var w=band.getBoundingClientRect().width;if(Math.abs(w-lw)<1)return;lw=w;clearTimeout(rt);rt=setTimeout(function(){B=setup(band);drawBand(performance.now())},120)}).observe(band)}
   B=setup(band);drawBand(performance.now());start();
 
-  /* ===== countdown (NOV 08, 示例时间, 上海时间) ===== */
-  var target=new Date('2026-11-08T19:00:00+08:00').getTime();
+  /* ===== countdown (DEC 16, 示例时间, 韩国时间) ===== */
+  var target=new Date('2026-12-16T19:00:00+09:00').getTime();
   function pad(n){return String(n).padStart(2,'0')}
   function tick(){
     var d=Math.max(0,target-Date.now()),s=Math.floor(d/1000);
