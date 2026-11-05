@@ -2,7 +2,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 /* Layout: single-page neon site that mirrors the group's own homepage (navy ground, cyan eyebrows, outlined OVERTURE, violet gradient pills, glass cards). Sections follow its order: hero, logo, members, events, goods, tickets. Deliberately one dark look. */
 :root{
@@ -11,8 +11,8 @@
   --text:#F3F4FF; --muted:#A9B0E3; --line:rgba(150,130,255,.30);
   --cyan:#35E3F5; --violet:#8B5CFF; --violet-d:#6C3BF5; --magenta:#F052C8; --on-bright:#08091F;
   --cheer:#FF5C93;
-  --f-display:"Sora","Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
-  --f-body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --f-display:"Sora","Noto Sans SC","Noto Sans KR","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --f-body:"Noto Sans SC","Noto Sans KR","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
 }
 html{scroll-behavior:smooth;background:var(--bg)}
@@ -38,6 +38,11 @@ h2{font:800 clamp(1.8rem,4.4vw,2.9rem)/1.25 var(--f-display);text-wrap:balance;m
 .glass{background:var(--card);border:1px solid var(--line);border-radius:20px}
 
 /* header */
+html[lang="ko"] body{word-break:keep-all;overflow-wrap:break-word}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.lang button{border:0;background:transparent;padding:.35rem .8rem;font:600 .75rem var(--f-display);letter-spacing:.04em;cursor:pointer;min-height:2rem;color:var(--muted)}
+.lang button[aria-pressed="true"]{background:linear-gradient(90deg,var(--violet-d),#B04BFF);color:#fff}
+.top{row-gap:.4rem}
 .top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.25rem 1.5rem;padding-block:1.1rem;border-bottom:1px solid rgba(150,130,255,.14)}
 .mark{font:800 1.15rem/1 var(--f-display);letter-spacing:.14em;text-decoration:none;text-transform:uppercase;text-shadow:0 0 18px rgba(139,92,255,.6)}
 .mark span{color:var(--cyan)}
@@ -159,8 +164,8 @@ h1 .l2{color:var(--bg);-webkit-text-stroke:3px var(--magenta);paint-order:stroke
 .archive dt{font-size:.8125rem;color:var(--cyan);flex:none}
 .archive dd{margin:0;text-align:right;font-weight:500}
 .prose{display:grid;gap:1.1rem;max-width:36em;color:var(--muted)}
-.pair{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:16px;margin-top:1.8rem;align-items:end}
-.pair .photo:last-child img{aspect-ratio:593/693;object-fit:cover}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:1.8rem;align-items:start}
+.pair .photo img{aspect-ratio:3/2;object-fit:cover}
 .seg{display:inline-flex;margin-top:1.4rem;border:1px solid var(--line);border-radius:999px;overflow:hidden}
 .seg button{border:0;background:transparent;padding:.55rem 1.2rem;font:600 .8125rem var(--f-display);cursor:pointer;min-height:2.75rem;color:var(--muted)}
 .seg button[aria-pressed="true"]{background:linear-gradient(90deg,var(--violet-d),#B04BFF);color:#fff}
@@ -291,7 +296,6 @@ html.has-stick,html.has-stick *{cursor:none!important}
 html.has-stick input,html.has-stick textarea{cursor:text!important}
 .marq{overflow:hidden;margin-top:clamp(3rem,7vw,5rem);margin-left:calc(-1*max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1*max(16px,env(safe-area-inset-right,0px)));padding-block:.3rem;border-block:1px solid rgba(150,130,255,.18)}
 .marq-in{display:inline-block;white-space:nowrap;font:800 clamp(2.6rem,9vw,6rem)/1.15 var(--f-display);letter-spacing:.06em;text-transform:uppercase;color:var(--bg);-webkit-text-stroke:3px rgba(139,92,255,.95);paint-order:stroke fill;will-change:transform;animation:marq 52s linear infinite}
-.marq-in[data-dir="1"]{animation-direction:reverse}
 @keyframes marq{to{transform:translate3d(-50%,0,0)}}
 .marq.b .marq-in{-webkit-text-stroke-color:rgba(53,227,245,.9)}
 .pill{border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--text);padding:.35rem .9rem;font:600 .75rem var(--f-display);letter-spacing:.06em;cursor:pointer;min-height:2rem}
@@ -328,12 +332,13 @@ html.loading{overflow:hidden}
 .renew{position:relative;height:330vh;margin-top:clamp(3rem,7vw,5rem)}
 .rn-stick{position:sticky;top:0;height:100vh;height:100svh;display:flex;flex-direction:column;justify-content:center;gap:.8rem;padding-block:.8rem;max-width:1160px;margin-inline:auto}
 .rn-head h2{font-size:clamp(1.5rem,3.6vw,2.4rem);margin-top:.2rem}
-.rn-frame{position:relative;width:100%;height:min(60svh,640px);border-radius:24px;overflow:hidden;border:1px solid var(--line);background:#05061a;box-shadow:0 0 70px rgba(108,59,245,.3)}
+.rn-frame{position:relative;aspect-ratio:2/1;width:min(100%,calc((100vh - 290px)*2));width:min(100%,calc((100svh - 290px)*2));margin-inline:auto;border-radius:24px;overflow:hidden;border:1px solid var(--line);background:#05061a;box-shadow:0 0 70px rgba(108,59,245,.3)}
 .rn-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .rn-old{filter:grayscale(calc(.75*(1 - var(--q,0)))) sepia(calc(.5*(1 - var(--q,0)))) brightness(calc(.78 + .22*var(--q,0)))}
 .rn-new{clip-path:circle(var(--rr,0px) at 50% 62%)}
 .rn-ring{position:absolute;left:50%;top:62%;width:calc(var(--rr,0px)*2);height:calc(var(--rr,0px)*2);transform:translate(-50%,-50%);border-radius:50%;border:2px solid rgba(53,227,245,.9);box-shadow:0 0 28px rgba(53,227,245,.8),inset 0 0 40px rgba(139,92,255,.5);pointer-events:none;opacity:calc(1 - var(--q,0)*1.05)}
-.rn-cap{position:absolute;left:0;right:0;bottom:0;padding:2.4rem 1.2rem 1rem;font-size:.9375rem;line-height:1.6;background:linear-gradient(0deg,rgba(5,6,26,.88),transparent)}
+.rn-caps{display:grid;min-height:3.2rem}
+.rn-cap{grid-area:1/1;font-size:.9375rem;line-height:1.6}
 .rn-cap b{display:block;font:700 .75rem var(--f-display);letter-spacing:.3em;color:var(--cyan);margin-bottom:.2rem}
 .rn-cap.old{opacity:clamp(0,calc(1 - var(--q,0)*2.4),1)}
 .rn-cap.new{opacity:clamp(0,calc((var(--q,0) - .55)*3),1)}
@@ -346,7 +351,7 @@ html.loading{overflow:hidden}
 .rn-hint{font:600 .75rem var(--f-display);letter-spacing:.2em;color:var(--cyan);opacity:clamp(0,calc(1 - var(--q,0)*8),1)}
 .renew.static{height:auto}
 .renew.static .rn-stick{position:static;height:auto;padding-block:0}
-@media (max-width:860px){.rn-frame{height:min(50svh,520px)}}
+@media (max-width:860px){.rn-frame{width:min(100%,calc((100svh - 340px)*2))}}
 
 /* 3D goods ring */
 .ring{margin-top:1.8rem;user-select:none;-webkit-user-select:none}
@@ -462,11 +467,10 @@ html.loading{overflow:hidden}
     <a href="#tickets">购票 TICKETS</a>
     <a href="#cartbox" id="navcart">购物车 <b id="navn">0</b></a>
   </nav>
+  <div class="lang" role="group" aria-label="Language"><button type="button" data-l="zh" aria-pressed="true">中文</button><button type="button" data-l="en" aria-pressed="false">EN</button><button type="button" data-l="ko" aria-pressed="false">한국어</button></div>
 </header>
 
 <main id="top">
-  <div class="wrap">
-   
   <section class="wrap hero">
     <div class="hero-copy">
       <p class="eyebrow">Fan concept site · Digital idol project</p>
@@ -520,19 +524,19 @@ html.loading{overflow:hidden}
       <div>
         <ol class="beats">
           <li class="glass"><span class="n">1</span><div>
-            <h3>被遗忘的舞台</h3><p class="ko">잊혀진 무대</p>
+            <h3>被遗忘的舞台</h3>
             <p class="d">地下女团发现一座建成后从未开业的商场。她们利用空旷中庭与高层回廊,把沉寂的建筑改造成一次秘密公演的场地。</p>
           </div></li>
           <li class="glass"><span class="n">2</span><div>
-            <h3>唤醒沉睡的空间</h3><p class="ko">잠든 공간 깨우기</p>
+            <h3>唤醒沉睡的空间</h3>
             <p class="d">观众从旧入口开始探索,寻找歌词与光点线索。店铺和地面装置逐步亮起,声音引导观众前往 04 区,等待团队登场。</p>
           </div></li>
           <li class="glass"><span class="n">3</span><div>
-            <h3>观众共同完成第一次开幕</h3><p class="ko">관객이 함께 완성하는 첫 개막</p>
+            <h3>观众共同完成第一次开幕</h3>
             <p class="d">四名成员在主舞台登场。观众在一层座位区观看,用荧光棒或 VR 控制器应援,灯光与投影随音乐和互动输入变化。终章后,旧招牌亮起「未启之音」。</p>
           </div></li>
         </ol>
-        <div class="pull"><b>团名:尚未奏响的序曲</b><span>아직 연주되지 않은 서곡. 들리기를 기다리는 꿈을 담는다.</span></div>
+        <div class="pull"><b>团名:尚未奏响的序曲</b><span>未被奏响的序曲,承载着等待被听见的梦。</span></div>
       </div>
       <figure class="photo tall">
         <img src="assets/concept-atrium.jpg" width="1600" height="900" loading="lazy" alt="阳光穿过玻璃穹顶,照进斑驳的多层商场中庭">
@@ -549,22 +553,22 @@ html.loading{overflow:hidden}
       <button type="button" class="card glass" aria-pressed="false" style="--c:#FFD84D" data-name="THERA" data-c="#FFD84D">
         <span class="ph"><img src="assets/thera.jpg" width="300" height="374" loading="lazy" alt="THERA:金色尖发,举起手臂"><span class="num">01</span></span>
         <span class="body"><h3>Thera</h3><span class="role">STAGE ENERGY</span>
-        <span class="q">元气开朗,舞台活力担当。</span><span class="ko">활기찬 성격, 무대 에너지 담당</span><span class="chip">SUNSHINE</span></span>
+        <span class="q">元气开朗,舞台活力担当。</span><span class="chip">SUNSHINE</span></span>
       </button>
       <button type="button" class="card glass" aria-pressed="false" style="--c:#9B6BFF" data-name="HERA" data-c="#9B6BFF">
         <span class="ph"><img src="assets/hera.jpg" width="300" height="374" loading="lazy" alt="HERA:黑色马尾,戴白色耳机,紫色眼睛"><span class="num">02</span></span>
         <span class="body"><h3>Hera</h3><span class="role">ARRANGER</span>
-        <span class="q">冷静内敛,编曲技术主力。</span><span class="ko">차분한 성격, 편곡 담당</span><span class="chip">RHYTHM</span></span>
+        <span class="q">冷静内敛,编曲技术主力。</span><span class="chip">RHYTHM</span></span>
       </button>
       <button type="button" class="card glass" aria-pressed="true" style="--c:#FF5C93" data-name="DAWN" data-c="#FF5C93">
         <span class="ph"><img src="assets/dawn.jpg" width="300" height="374" loading="lazy" alt="DAWN:白色到红色渐变的双马尾,蓝色眼睛"><span class="num">03</span></span>
         <span class="body"><h3>Dawn</h3><span class="role">CENTER VOCAL</span>
-        <span class="q">热情耀眼,团队中心主唱。</span><span class="ko">열정적인 팀의 메인 보컬</span><span class="chip">HEART</span></span>
+        <span class="q">热情耀眼,团队中心主唱。</span><span class="chip">HEART</span></span>
       </button>
       <button type="button" class="card glass" aria-pressed="false" style="--c:#35E0F0" data-name="UPI" data-c="#35E0F0">
         <span class="ph"><img src="assets/upi.jpg" width="300" height="374" loading="lazy" alt="UPI:黑色短发,戴猫耳耳机"><span class="num">04</span></span>
         <span class="body"><h3>Upi</h3><span class="role">STAGE CONTROL</span>
-        <span class="q">沉稳寡言,协助舞台控场。</span><span class="ko">차분한 성격, 무대 운영 보조</span><span class="chip">STYLE</span></span>
+        <span class="q">沉稳寡言,协助舞台控场。</span><span class="chip">STYLE</span></span>
       </button>
     </div>
     <p class="cheer"><i aria-hidden="true"></i><span id="cheerlbl">应援色 · DAWN</span><button type="button" class="pill" id="stickoff" hidden>恢复普通指针和拖尾</button></p>
@@ -585,7 +589,7 @@ html.loading{overflow:hidden}
         </div>
       </article>
       <article class="ev glass">
-        <div class="date"><small>NOV</small><b>22</b></div>
+        <div class="date"><small>DEC</small><b>16</b></div>
         <div>
           <h3>Memory Street Pop-up</h3>
           <p class="meta">LIMITED POP-UP · 02 区记忆街区</p>
@@ -636,7 +640,7 @@ html.loading{overflow:hidden}
       <button type="button" id="v-bird" aria-pressed="false">俯瞰图</button>
     </div>
     <div class="mapbox"><img id="mapimg" src="assets/map-front.jpg" width="1600" height="800" loading="lazy" alt="五区分布的概念示意图"></div>
-    <p class="cap">功能关系示意,不是实测图 · 기능 관계 개념도, 실측 도면 아님</p>
+    <p class="cap">功能关系示意,不是实测图</p>
     <ul class="zones" id="zonebtns"></ul>
     <div class="zpanel glass" id="zpanel" aria-live="polite"></div>
   </section>
@@ -648,9 +652,8 @@ html.loading{overflow:hidden}
         <img class="rn-old" src="assets/concept-atrium.jpg" width="1600" height="900" alt="废弃商场中庭概念图:积灰的环形回廊和天窗,地面空旷">
         <img class="rn-new" src="assets/map-front.jpg" width="1600" height="800" alt="翻新后的中庭概念图:霓虹灯光、主舞台和观众席,标注五个区域">
         <div class="rn-ring" aria-hidden="true"></div>
-        <p class="rn-cap old"><b>BEFORE</b>建成后从未开业的中庭:积灰、空旷,只剩天窗的光。</p>
-        <p class="rn-cap new"><b>AFTER</b>提案里的 04 区:同一个中庭,被声波和灯光重新点亮。</p>
       </div>
+      <div class="rn-caps"><p class="rn-cap old"><b>BEFORE</b>建成后从未开业的中庭:积灰、空旷,只剩天窗的光。</p><p class="rn-cap new"><b>AFTER</b>提案里的 04 区:同一个中庭,被声波和灯光重新点亮。</p></div>
       <div class="rn-meter" aria-hidden="true"><span>BEFORE</span><i><b></b></i><span>AFTER</span></div>
       <ol class="rn-zones" aria-label="五个区域">
         <li>01 入口 · 唤醒</li><li>02 记忆街区</li><li>03 儿童 · 轻互动</li><li>04 中庭主舞台</li><li>05 高层回廊</li>
@@ -697,7 +700,7 @@ html.loading{overflow:hidden}
   </section>
 
   <section class="wrap sec" id="tickets">
-    <p class="eyebrow">Tickets · 온라인 티켓 예매</p>
+    <p class="eyebrow">Tickets</p>
     <h2>选一个参与方式</h2>
     <p class="sub">票和周边都先放进购物车。可以一起结算,也可以只结算其中一类。</p>
     <form id="orderform" novalidate>
@@ -712,7 +715,7 @@ html.loading{overflow:hidden}
           <dl>
             <div><dt>票档</dt><dd id="s-name">现场座席</dd></div>
             <div><dt>数量</dt><dd id="s-qty">1 张</dd></div>
-            <div><dt>场次</dt><dd id="s-when">2026.12.16 19:00</dd></div>  
+            <div><dt>场次</dt><dd id="s-when">2026.12.16 19:00</dd></div>
             <div class="total"><dt>小计</dt><dd id="s-total">₩35,000</dd></div>
           </dl>
           <div class="qrow">
@@ -752,7 +755,7 @@ html.loading{overflow:hidden}
 
     <div class="done" id="done" hidden>
       <div class="done-head">
-        <h3 id="done-h" tabindex="-1">购买成功 · 구매 완료 · Purchase complete</h3>
+        <h3 id="done-h" tabindex="-1">购买成功</h3>
         <p id="done-sub"></p>
       </div>
       <div class="done-grid">
@@ -787,10 +790,6 @@ html.loading{overflow:hidden}
         <summary>05 区什么时候去?</summary>
         <p>建议演前或演后。演后预留 15 分钟,去高层回廊拍照,再按出口导览离场。屋顶是否开放,以场地可用性确认为准。</p>
       </details>
-      <details>
-        <summary>这是真的活动吗?</summary>
-        <p>不是。这是课程里的概念提案,日期、票价和订单都是示例,演出和 VR 互动是展演方案,不代表已完成的联网系统。场地是真实存在的建筑,请不要前往。</p>
-      </details>
     </div>
   </section>
 
@@ -809,6 +808,290 @@ html.loading{overflow:hidden}
   function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
   var root=document.documentElement;
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* ===== i18n: zh is the source text; en / ko come from this table ===== */
+  var LANG='zh',D={};
+  [
+   ['未启之音','Silent Overture','사일런트 오버추어'],
+   ['未启之音 · LOADING','Silent Overture · LOADING','사일런트 오버추어 · LOADING'],
+   ['购物车','Cart','장바구니'],
+   ['成员 MEMBERS','MEMBERS','멤버 MEMBERS'],
+   ['演出 EVENTS','EVENTS','공연 EVENTS'],
+   ['空间 SPACE','SPACE','공간 SPACE'],
+   ['周边 GOODS','GOODS','굿즈 GOODS'],
+   ['购票 TICKETS','TICKETS','예매 TICKETS'],
+   ['欢迎来到 Silent Overture 的霓虹宇宙。与 Thera、Hera、Dawn、Upi 一起,进入音乐、光影与未来交织的现场。第一场,设在一座建成后从未开业的商场里。','Welcome to the neon universe of Silent Overture. Join Thera, Hera, Dawn and Upi in a show where music, light and the future meet. The first show is set inside a mall that was built but never opened.','사일런트 오버추어의 네온 우주에 오신 것을 환영합니다. 테라, 헤라, 던, 우피와 함께 음악과 빛, 미래가 어우러지는 현장으로 들어가 보세요. 첫 공연은 완공 후 한 번도 문을 열지 않은 쇼핑몰에서 열립니다.'],
+   ['探索演出 ↗','Explore the show ↗','공연 보기 ↗'],
+   ['认识成员','Meet the members','멤버 소개'],
+   ['距 DEC 16 · Neon Live 开演(时间为示例)','Until DEC 16 · Neon Live starts (sample time)','DEC 16 · Neon Live 공연까지 (예시 시간)'],
+   ['12.16 周三','12.16 Wed','12.16 수요일'],
+   ['日期待最终确认','Date to be confirmed','날짜는 최종 확정 예정'],
+   ['18:30 开放探索','18:30 Exploration opens','18:30 탐험 입장'],
+   ['19:00 开演 · 示例时间','19:00 Show starts · sample time','19:00 공연 시작 · 예시 시간'],
+   ['正演 60 分钟','60-minute show','본 공연 60분'],
+   ['演后预留 15 分钟拍照离场','15 minutes after the show for photos and exit','공연 후 15분 촬영 및 퇴장'],
+   ['东方国贸新天地','Dongfang Guomao New World','동방국무 신천지'],
+   ['上海闵行华漕 · 中庭主舞台','Huacao, Minhang, Shanghai · Atrium main stage','상하이 민항 화차오 · 중정 메인 무대'],
+   ['Story · 演出故事','Story','스토리'],
+   ['《未启之音》','“Silent Overture”','《사일런트 오버추어》'],
+   ['被遗忘的舞台','The forgotten stage','잊혀진 무대'],
+   ['地下女团发现一座建成后从未开业的商场。她们利用空旷中庭与高层回廊,把沉寂的建筑改造成一次秘密公演的场地。','An underground girl group finds a mall that was built but never opened. Using its empty atrium and upper galleries, they turn the silent building into the venue of a secret concert.','언더그라운드 걸그룹이 완공 후 한 번도 문을 열지 않은 쇼핑몰을 발견합니다. 텅 빈 중정과 상층 회랑을 활용해 고요한 건물을 비밀 공연장으로 바꿉니다.'],
+   ['唤醒沉睡的空间','Waking the sleeping space','잠든 공간 깨우기'],
+   ['观众从旧入口开始探索,寻找歌词与光点线索。店铺和地面装置逐步亮起,声音引导观众前往 04 区,等待团队登场。','The audience starts at the old entrance and looks for lyrics and points of light. Shops and floor installations light up one by one, and sound guides everyone to Zone 04 to wait for the group.','관객은 옛 입구에서 출발해 가사와 빛의 단서를 찾습니다. 상점과 바닥 장치가 차례로 켜지고, 소리가 관객을 04구역으로 안내해 팀의 등장을 기다리게 합니다.'],
+   ['观众共同完成第一次开幕','The first opening, finished together','관객이 함께 완성하는 첫 개막'],
+   ['四名成员在主舞台登场。观众在一层座位区观看,用荧光棒或 VR 控制器应援,灯光与投影随音乐和互动输入变化。终章后,旧招牌亮起「未启之音」。','The four members appear on the main stage. The audience watches from the ground-floor seats and cheers with light sticks or VR controllers, while lights and projections react to the music and their input. After the finale, the old sign lights up with “Silent Overture”.','네 멤버가 메인 무대에 등장합니다. 관객은 1층 객석에서 응원봉이나 VR 컨트롤러로 응원하고, 조명과 영상은 음악과 관객의 입력에 따라 바뀝니다. 피날레 후 낡은 간판에 「사일런트 오버추어」가 켜집니다.'],
+   ['团名:尚未奏响的序曲','The name: an overture not yet played','팀 이름: 아직 연주되지 않은 서곡'],
+   ['未被奏响的序曲,承载着等待被听见的梦。','An overture that has not yet been played, holding a dream that is waiting to be heard.','아직 연주되지 않은 서곡. 들리기를 기다리는 꿈을 담는다.'],
+   ['概念视觉 · 沉寂的中庭,不是现场照片','Concept art · the silent atrium, not a photo of the site','컨셉 비주얼 · 고요한 중정, 현장 사진이 아님'],
+   ['Members · 团队介绍','Members','Members · 멤버 소개'],
+   ['四种光芒,同一个舞台','Four lights, one stage','네 가지 빛, 하나의 무대'],
+   ['点一张卡片,把她的颜色设为你的应援色。它会出现在下面订票后的电子票上。','Tap a card to make her colour your cheer colour. It will appear on your e-ticket after you book below.','카드를 눌러 그녀의 색을 나의 응원 색으로 정하세요. 아래에서 예매한 뒤 전자 티켓에 표시됩니다.'],
+   ['元气开朗,舞台活力担当。','Bright and cheerful, the stage energy of the group.','활기찬 성격, 무대 에너지 담당'],
+   ['冷静内敛,编曲技术主力。','Calm and reserved, the main force behind arrangement.','차분한 성격, 편곡 담당'],
+   ['热情耀眼,团队中心主唱。','Passionate and dazzling, the centre vocal.','열정적인 팀의 메인 보컬'],
+   ['沉稳寡言,协助舞台控场。','Steady and quiet, helps run the stage.','차분한 성격, 무대 운영 보조'],
+   ['应援色','Cheer colour','응원 색'],
+   ['恢复普通指针和拖尾','Restore normal cursor and trail','기본 커서와 트레일로 되돌리기'],
+   ['点一张成员卡片,指针会变成她的应援棒,拖尾换成她的颜色。右键(或按 Esc)可以全部恢复。','Click a member card and the cursor turns into her light stick, with the trail in her colour. Right-click (or press Esc) to restore everything.','멤버 카드를 누르면 커서가 그녀의 응원봉으로 바뀌고 트레일도 그녀의 색이 됩니다. 오른쪽 클릭(또는 Esc)으로 모두 되돌릴 수 있습니다.'],
+   ['Live events · 演出','Live events','Live events · 공연'],
+   ['即将发生的现场','Coming up','곧 열리는 공연'],
+   ['MAIN STAGE · 04 区中庭主舞台','MAIN STAGE · Zone 04 atrium stage','MAIN STAGE · 04구역 중정 메인 무대'],
+   ['四位成员在中庭主舞台登场,观众在一层座位区用荧光棒或 VR 控制器应援。入场信息待公布,页面里的时间为示例。','The four members take the atrium main stage while the audience cheers from the ground-floor seats with light sticks or VR controllers. Entry details are yet to be announced; times on this page are samples.','네 멤버가 중정 메인 무대에 등장하고 관객은 1층 객석에서 응원봉이나 VR 컨트롤러로 응원합니다. 입장 정보는 추후 공개되며, 페이지의 시간은 예시입니다.'],
+   ['选择票档 ↗','Choose a ticket ↗','티켓 선택 ↗'],
+   ['LIMITED POP-UP · 02 区记忆街区','LIMITED POP-UP · Zone 02 Memory Street','LIMITED POP-UP · 02구역 기억 거리'],
+   ['限时快闪。周边摊位、饮品小食和休息桌,不含公演座位。示例开放时间 12:00–18:00。','A limited-time pop-up with goods stalls, drinks, snacks and rest tables. No concert seat included. Sample opening hours 12:00–18:00.','기간 한정 팝업. 굿즈 부스, 음료와 간식, 휴식 테이블이 있으며 공연 좌석은 포함되지 않습니다. 예시 운영 시간 12:00–18:00.'],
+   ['快闪登记 ↗','Pop-up sign-up ↗','팝업 등록 ↗'],
+   ['Neon Live · 60 分钟,六个段落','Neon Live · 60 minutes, six parts','Neon Live · 60분, 여섯 개의 파트'],
+   ['按时长画成一条横轴,条越宽,段落越长。点任意一段,看画面、观众互动和幕后控制。','Drawn as a timeline: the wider the bar, the longer the part. Tap any part to see the visuals, audience interaction and backstage control.','시간 길이대로 그린 가로 타임라인입니다. 막대가 넓을수록 파트가 깁니다. 파트를 눌러 화면, 관객 참여, 무대 뒤 제어를 확인하세요.'],
+   ['横条可以左右滑动','The bar can be swiped sideways','막대를 좌우로 밀 수 있습니다'],
+   ['演出时间轴','Show timeline','공연 타임라인'],
+   ['Space · 原建筑与五区','Space · the building and five zones','Space · 원래 건물과 다섯 구역'],
+   ['闵行华漕东方国贸新天地','Dongfang Guomao New World, Huacao, Minhang','민항 화차오 동방국무 신천지'],
+   ['这座建筑原规划为大型商业综合体:一至四层安排购物、餐饮与娱乐,五层以上配套酒店。原稿资料记录土建完成于 2014 年,之后没有开业。','The building was planned as a large commercial complex: shopping, dining and entertainment on floors one to four, with a hotel above. Source material records the structure as finished in 2014; it never opened.','이 건물은 대형 복합 상업시설로 계획되었습니다. 1~4층은 쇼핑·식음·엔터테인먼트, 5층 이상은 호텔입니다. 자료에 따르면 2014년에 골조가 완공되었고 이후 개장하지 않았습니다.'],
+   ['提案保留建筑体量和外立面,只在入口附加主题标识、单张灯箱和五区导览。外围用声波与歌词图形,成员的形象集中在 04 区。','The proposal keeps the building mass and facade, only adding themed signs, a single light box and a five-zone guide at the entrance. The outside uses sound waves and lyric graphics; the members’ images are concentrated in Zone 04.','이 제안은 건물의 규모와 외관을 그대로 두고, 입구에 테마 사인, 라이트박스 한 점, 다섯 구역 안내만 더합니다. 외부는 음파와 가사 그래픽을 쓰고, 멤버의 이미지는 04구역에 모읍니다.'],
+   ['原规划','Original plan','원래 계획'],
+   ['大型商业综合体','Large commercial complex','대형 복합 상업시설'],
+   ['1–4 层','Floors 1–4','1–4층'],
+   ['购物 · 餐饮 · 娱乐','Shopping · dining · entertainment','쇼핑 · 식음 · 엔터테인먼트'],
+   ['5 层以上','Floor 5 and up','5층 이상'],
+   ['酒店','Hotel','호텔'],
+   ['土建完成','Structure finished','골조 완공'],
+   ['2014(原稿资料)','2014 (source material)','2014 (원자료)'],
+   ['状态','Status','상태'],
+   ['建成后从未开业','Built but never opened','완공 후 개장하지 않음'],
+   ['本页活动','This page’s event','이 페이지의 행사'],
+   ['课程概念提案','Course concept proposal','수업 컨셉 제안'],
+   ['原建筑外观','The building today','현재 건물 외관'],
+   ['原中庭','The original atrium','원래의 중정'],
+   ['五区:一层观演,上层拍照','Five zones: show on the ground floor, photos upstairs','다섯 구역: 1층에서 공연, 위층에서 촬영'],
+   ['01–04 区在一层,05 区是高层回廊。开演前 5 分钟回到 04 区就座,05 区建议安排在演前或演后。','Zones 01–04 are on the ground floor; Zone 05 is the upper gallery. Be seated in Zone 04 five minutes before the show; visit Zone 05 before or after.','01–04구역은 1층, 05구역은 상층 회랑입니다. 공연 5분 전까지 04구역 좌석으로 돌아오고, 05구역은 공연 전이나 후에 방문하세요.'],
+   ['正视图','Front view','정면도'],
+   ['俯瞰图','Bird’s-eye view','조감도'],
+   ['功能关系示意,不是实测图','Diagram of how zones relate, not a measured plan','기능 관계 개념도, 실측 도면 아님'],
+   ['Renovation · 旧内景翻新','Renovation','Renovation · 옛 내부 리노베이션'],
+   ['旧的中庭,慢慢亮起来','The old atrium, slowly lighting up','낡은 중정이 천천히 밝아집니다'],
+   ['建成后从未开业的中庭:积灰、空旷,只剩天窗的光。','The atrium that never opened: dusty, empty, lit only by the skylight.','한 번도 문을 열지 않은 중정: 먼지가 쌓이고 텅 비어, 천창의 빛만 남았습니다.'],
+   ['提案里的 04 区:同一个中庭,被声波和灯光重新点亮。','Zone 04 in the proposal: the same atrium, lit again by sound waves and light.','제안 속 04구역: 같은 중정이 음파와 조명으로 다시 밝혀집니다.'],
+   ['01 入口 · 唤醒','01 Entrance · Wake-up','01 입구 · 웨이크업'],
+   ['02 记忆街区','02 Memory Street','02 기억 거리'],
+   ['03 儿童 · 轻互动','03 Kids · Light play','03 어린이 · 라이트 인터랙션'],
+   ['04 中庭主舞台','04 Atrium main stage','04 중정 메인 무대'],
+   ['05 高层回廊','05 Upper gallery','05 상층 회랑'],
+   ['向下滚动或滑动,让它翻新 ↓','Scroll or swipe down to renovate it ↓','아래로 스크롤하거나 밀어서 리노베이션하기 ↓'],
+   ['旧中庭翻新对比','Old atrium renovation comparison','옛 중정 리노베이션 비교'],
+   ['五个区域','Five zones','다섯 구역'],
+   ['Official goods · 官方周边','Official goods','Official goods · 공식 굿즈'],
+   ['把光带回家','Take the light home','빛을 집으로'],
+   ['周边摊位在 02 区记忆街区。灯棒、随机卡、立牌是官网列出的周边,钥匙扣、手环、挂绳来自概念设计稿。价格均为示例,可以先放进购物车。','Goods stalls are in Zone 02 Memory Street. The light stick, random card and stand are listed on the official site; the keychain, band and lanyard come from concept designs. All prices are samples; add them to the cart first.','굿즈 부스는 02구역 기억 거리에 있습니다. 응원봉, 랜덤 카드, 스탠드는 공식 사이트에 올라온 굿즈이고, 키링·팔찌·랜야드는 컨셉 디자인입니다. 가격은 모두 예시이며 먼저 장바구니에 담을 수 있습니다.'],
+   ['周边展示,可左右拖动旋转','Goods display, drag sideways to rotate','굿즈 전시, 좌우로 드래그해 회전'],
+   ['会自己缓慢转圈。拖动或滑动可以转,点一件放大并选购。','It turns slowly by itself. Drag or swipe to spin it; tap an item to enlarge and choose it.','저절로 천천히 돕니다. 드래그하거나 밀어서 돌리고, 하나를 눌러 확대해 고르세요.'],
+   ['上一件','Previous','이전'],['下一件','Next','다음'],['款式','Style','스타일'],
+   ['减少一件','One fewer','하나 줄이기'],['增加一件','One more','하나 늘리기'],
+   ['加入购物车','Add to cart','장바구니에 담기'],
+   ['收起','Close','닫기'],
+   ['准备好进入 Silent Overture 了吗?','Ready to enter Silent Overture?','사일런트 오버추어에 들어갈 준비가 되셨나요?'],
+   ['查看活动与购票信息 ↗','See the events and tickets ↗','공연과 예매 정보 보기 ↗'],
+   ['选一个参与方式','Choose how to take part','참여 방법을 고르세요'],
+   ['票和周边都先放进购物车。可以一起结算,也可以只结算其中一类。','Put tickets and goods in the cart first. Check out together, or only one kind.','티켓과 굿즈를 먼저 장바구니에 담으세요. 함께 결제하거나 한 종류만 결제할 수 있습니다.'],
+   ['票档(示例票价)','Ticket type (sample prices)','티켓 종류 (예시 가격)'],
+   ['Neon Live · 现场座席','Neon Live · Seat','Neon Live · 현장 좌석'],
+   ['12.16 · 04 区中庭主舞台的座位。含荧光棒领取和五区导览。','12.16 · A seat at the Zone 04 atrium stage. Includes a light stick and a five-zone guide.','12.16 · 04구역 중정 메인 무대의 좌석. 응원봉 수령과 다섯 구역 안내 포함.'],
+   ['Neon Live · 座席 + VR 体验','Neon Live · Seat + VR experience','Neon Live · 좌석 + VR 체험'],
+   ['12.16 · 在座席票基础上增加一次头显体验:戴上设备,从第一视角进入五区。','12.16 · Adds a headset session to the seat ticket: put on the device and enter the five zones in first person.','12.16 · 좌석 티켓에 헤드셋 체험이 추가됩니다. 기기를 쓰고 1인칭 시점으로 다섯 구역에 들어갑니다.'],
+   ['Memory Street Pop-up · 入场登记','Memory Street Pop-up · Entry sign-up','Memory Street Pop-up · 입장 등록'],
+   ['12.16 · 02 区记忆街区限时快闪。不含公演座位。','12.16 · Limited pop-up in Zone 02 Memory Street. No concert seat included.','12.16 · 02구역 기억 거리 기간 한정 팝업. 공연 좌석은 포함되지 않습니다.'],
+   ['免费','Free','무료'],
+   ['票档','Ticket','티켓'],['现场座席','Seat','현장 좌석'],['数量','Quantity','수량'],['1 张','1 ticket','1장'],['场次','Show','일정'],['小计','Subtotal','소계'],
+   ['张数(最多 4 张)','Tickets (up to 4)','매수 (최대 4장)'],
+   ['减少一张','One fewer ticket','한 장 줄이기'],['增加一张','One more ticket','한 장 늘리기'],
+   ['演示页面。没有真实售票、扣款或活动。','Demo page. No real ticket sales, charges or event.','데모 페이지입니다. 실제 판매, 결제, 행사는 없습니다.'],
+   ['票务小计','Tickets subtotal','티켓 소계'],['周边小计','Goods subtotal','굿즈 소계'],['合计','Total','합계'],
+   ['观演人 / 收件人姓名','Attendee / recipient name','관람자 / 수령인 이름'],
+   ['接收确认信息的邮箱','Email for the confirmation','확인 메일을 받을 이메일'],
+   ['手机号(选填,用于短信预览)','Phone (optional, for the SMS preview)','휴대폰 번호 (선택, 문자 미리보기용)'],
+   ['邮箱和手机号只用来生成下面的预览,页面不会保存,也不会发给任何人。','Your email and phone are only used to build the preview below. The page does not store them or send them to anyone.','이메일과 휴대폰 번호는 아래 미리보기를 만드는 데만 쓰이며, 저장되거나 누구에게도 전송되지 않습니다.'],
+   ['邮箱用于发送确认邮件。手机号只用于下面的短信预览,不会发送。','Your email is used to send the confirmation. The phone number is only used for the SMS preview and is not sent.','이메일은 확인 메일 발송에 쓰입니다. 휴대폰 번호는 문자 미리보기에만 쓰이며 발송되지 않습니다.'],
+   ['全部一起结算','Check out everything','전체 함께 결제'],['只结算票务','Check out tickets only','티켓만 결제'],['只结算周边','Check out goods only','굿즈만 결제'],
+   ['演示结算,不会扣款。没结算的内容会留在购物车里。','Demo checkout, nothing is charged. Anything you do not check out stays in the cart.','데모 결제이며 실제 결제는 되지 않습니다. 결제하지 않은 항목은 장바구니에 남습니다.'],
+   ['购买成功','Purchase complete','구매 완료'],
+   ['示例电子票和取货单,条码不可扫描。','Sample e-tickets and pickup slip; the barcode cannot be scanned.','예시 전자 티켓과 수령증이며 바코드는 스캔되지 않습니다.'],
+   ['确认信息预览','Confirmation preview','확인 메시지 미리보기'],
+   ['邮件','Email','메일'],['短信','SMS','문자'],['继续选购','Keep shopping','계속 쇼핑'],
+   ['没有头显可以参与吗?','Can I join without a headset?','헤드셋 없이도 참여할 수 있나요?'],
+   ['可以。现场座席票在 04 区观看公演。没有头显时,VR 互动用键盘和鼠标演示同样的事件。远程多人观演是后续扩展,目前不提供。','Yes. A seat ticket watches the show in Zone 04. Without a headset, the VR interactions are demonstrated with keyboard and mouse. Remote multi-user viewing is a later extension and is not offered now.','네. 현장 좌석 티켓은 04구역에서 공연을 봅니다. 헤드셋이 없으면 VR 상호작용은 키보드와 마우스로 같은 이벤트를 시연합니다. 원격 다중 접속 관람은 향후 확장이며 현재는 제공하지 않습니다.'],
+   ['什么时候到场?','When should I arrive?','언제 도착해야 하나요?'],
+   ['提前 30 分钟开放探索,按 01 到 03 区的顺序走。开演前 5 分钟回到 04 区就座。','Exploration opens 30 minutes early; walk Zones 01 to 03 in order. Be seated in Zone 04 five minutes before the show.','30분 전부터 탐험이 열립니다. 01~03구역 순서로 둘러보고, 공연 5분 전에 04구역 좌석으로 돌아오세요.'],
+   ['05 区什么时候去?','When do I visit Zone 05?','05구역은 언제 가나요?'],
+   ['建议演前或演后。演后预留 15 分钟,去高层回廊拍照,再按出口导览离场。屋顶是否开放,以场地可用性确认为准。','Before or after the show. Leave 15 minutes afterwards to take photos in the upper gallery, then follow the exit guide. Whether the roof is open depends on venue availability.','공연 전이나 후를 권합니다. 공연 후 15분 동안 상층 회랑에서 사진을 찍고 출구 안내에 따라 퇴장하세요. 옥상 개방 여부는 장소 사정에 따라 확인됩니다.'],
+   ['© 2026 SILENT OVERTURE · 未启之音 · fan concept website','© 2026 SILENT OVERTURE · fan concept website','© 2026 SILENT OVERTURE · fan concept website'],
+   ['专题设计 2 课程提案。图像为 AI 生成的概念视觉,不是现场照片。','Course proposal for Topic Design 2. Images are AI-generated concept visuals, not photos of the site.','전공 디자인 2 수업 제안입니다. 이미지는 AI로 생성한 컨셉 비주얼이며 현장 사진이 아닙니다.'],
+   ['页面导航','Page navigation','페이지 내비게이션'],
+   ['距离 12 月 16 日 Neon Live 开演的时间','Time until Neon Live on December 16','12월 16일 Neon Live 공연까지 남은 시간'],
+   ['SILENT OVERTURE 主视觉海报:四位成员站在霓虹舞台前','Silent Overture key visual: the four members in front of a neon stage','SILENT OVERTURE 메인 비주얼: 네온 무대 앞에 선 네 멤버'],
+   ['霓虹声波,会随指针移动变高','Neon sound waves that rise as the pointer moves','포인터를 따라 높아지는 네온 음파'],
+   ['阳光穿过玻璃穹顶,照进斑驳的多层商场中庭','Sunlight through the glass dome into the worn multi-storey atrium','유리 돔을 통과한 햇빛이 낡은 다층 중정을 비춥니다'],
+   ['THERA:金色尖发,举起手臂','THERA: spiky golden hair, arm raised','THERA: 금빛 뾰족한 머리, 팔을 든 모습'],
+   ['HERA:黑色马尾,戴白色耳机,紫色眼睛','HERA: black ponytail, white headphones, purple eyes','HERA: 검은 포니테일, 흰 헤드폰, 보라색 눈'],
+   ['DAWN:白色到红色渐变的双马尾,蓝色眼睛','DAWN: white-to-red gradient twin tails, blue eyes','DAWN: 흰색에서 빨강으로 이어지는 양갈래 머리, 파란 눈'],
+   ['UPI:黑色短发,戴猫耳耳机','UPI: short black hair, cat-ear headphones','UPI: 검은 단발, 고양이 귀 헤드폰'],
+   ['沿河的白色欧式风格大型建筑外观','Exterior of a large white European-style building by a river','강변의 흰색 유럽풍 대형 건물 외관'],
+   ['从高处俯拍的空旷中庭,钢结构玻璃顶下停着几辆车','An empty atrium shot from above; a few cars parked under the steel-and-glass roof','높은 곳에서 찍은 텅 빈 중정, 철골 유리 지붕 아래 차 몇 대가 서 있습니다'],
+   ['切换示意图视角','Switch diagram view','도식 시점 전환'],
+   ['五区分布的概念示意图','Concept diagram of the five zones','다섯 구역 배치 개념도'],
+   ['废弃商场中庭概念图:积灰的环形回廊和天窗,地面空旷','Concept of the abandoned atrium: dusty ring galleries and a skylight over an empty floor','폐쇄된 쇼핑몰 중정 컨셉: 먼지 쌓인 원형 회랑과 천창, 텅 빈 바닥'],
+   ['翻新后的中庭概念图:霓虹灯光、主舞台和观众席,标注五个区域','Concept of the renovated atrium: neon lights, main stage and seating, with five zones marked','리노베이션된 중정 컨셉: 네온 조명, 메인 무대, 객석과 다섯 구역 표시'],
+   ['例如:林夏','e.g. Lin Xia','예: 린샤'],['选填','Optional','선택'],
+   /* dynamic strings */
+   ['购物车是空的。上面选一个票档,或者在周边展示里挑一件。','The cart is empty. Choose a ticket above, or pick an item from the goods display.','장바구니가 비어 있습니다. 위에서 티켓을 고르거나 굿즈 전시에서 하나를 고르세요.'],
+   ['移除','Remove','삭제'],['减少','Decrease','줄이기'],['增加','Increase','늘리기'],
+   ['已加入购物车:','Added to cart: ','장바구니에 담았습니다: '],
+   ['没有可结算的内容','Nothing to check out','결제할 항목이 없습니다'],
+   ['官网周边价','Official site price','공식 사이트 가격'],['概念设计 · 示例价','Concept design · sample price','컨셉 디자인 · 예시 가격'],
+   ['Silent Overture ✧ 未启之音 ✧ ','Silent Overture ✧ ','사일런트 오버추어 ✧ '],
+   ['应援灯棒','Neon Light Stick','응원봉'],
+   ['官方应援灯棒。三种灯光模式,长按开关切换。可选团体版或四位成员的个人版。','The official light stick, with three light modes (hold the switch to change). Choose the group version or one of the four members.','공식 응원봉. 세 가지 조명 모드, 스위치를 길게 눌러 전환합니다. 단체판 또는 멤버 개인판을 고를 수 있습니다.'],
+   ['团体版','Group','단체판'],
+   ['随机成员卡','Random Member Card','랜덤 멤버 카드'],
+   ['随机抽取一位成员的收藏卡,Thera、Hera、Dawn、Upi 四选一。','A random member collector card: one of Thera, Hera, Dawn or Upi.','멤버 한 명의 컬렉션 카드를 무작위로 뽑습니다. 테라, 헤라, 던, 우피 중 하나입니다.'],
+   ['随机一张','One at random','랜덤 1장'],
+   ['限定亚克力立牌','Limited Acrylic Stand','한정 아크릴 스탠드'],
+   ['限定亚克力立牌,四位成员站在同一块底座上。','A limited acrylic stand with all four members on one base.','네 멤버가 한 받침대 위에 서 있는 한정 아크릴 스탠드.'],
+   ['四人合影款','Group of four','4인 단체'],
+   ['成员应援钥匙扣','Member Keychain','멤버 응원 키링'],
+   ['概念设计稿里的成员钥匙扣,四款成员头像各一个。示例商品。','Member keychains from the concept sheet, one for each of the four. Sample item.','컨셉 시안 속 멤버 키링, 네 멤버가 한 개씩. 예시 상품.'],
+   ['四款随机','Random of four','4종 랜덤'],
+   ['硅胶应援手环','Silicone Band','실리콘 응원 밴드'],
+   ['四种成员颜色的硅胶手环,概念设计稿。示例商品。','Silicone bands in the four member colours, from the concept sheet. Sample item.','네 멤버 색의 실리콘 밴드, 컨셉 시안. 예시 상품.'],
+   ['随机颜色','Random colour','랜덤 색상'],
+   ['应援挂绳','Lanyard','응원 랜야드'],
+   ['印有 SILENT OVERTURE 标识的挂绳,概念设计稿。示例商品。','A lanyard printed with the SILENT OVERTURE mark, from the concept sheet. Sample item.','SILENT OVERTURE 로고가 인쇄된 랜야드, 컨셉 시안. 예시 상품.'],
+   ['标准款','Standard','기본형'],
+   ['点击放大选购','tap to enlarge and choose','눌러서 확대하고 선택'],
+   /* tickets & events */
+   ['Neon Live · 现场座席','Neon Live · Seat','Neon Live · 현장 좌석'],
+   ['无座位(自由参观)','No seat (free roaming)','좌석 없음 (자유 관람)'],
+   ['2026年12月16日(周三)19:00','Wed, December 16, 2026, 19:00','2026년 12월 16일(수) 19:00'],
+   ['2026年12月16日(周三)12:00–18:00(示例)','Wed, December 16, 2026, 12:00–18:00 (sample)','2026년 12월 16일(수) 12:00–18:00 (예시)'],
+   ['01 区检票','Check-in at Zone 01','01구역 체크인'],['01 区登记','Sign-up at Zone 01','01구역 등록'],
+   ['18:30 起开放探索,从 01 区检票并领取荧光棒。','Exploration opens from 18:30. Check in at Zone 01 and pick up your light stick.','18:30부터 탐험이 열립니다. 01구역에서 체크인하고 응원봉을 받으세요.'],
+   ['19:00 开演,请在 18:55 前回到 04 区就座。','The show starts at 19:00. Please be seated in Zone 04 by 18:55.','19:00에 공연이 시작됩니다. 18:55까지 04구역 좌석으로 돌아와 주세요.'],
+   ['演后预留 15 分钟,可去 05 区高层回廊拍照。','Leave 15 minutes after the show to take photos in the Zone 05 upper gallery.','공연 후 15분 동안 05구역 상층 회랑에서 사진을 찍을 수 있습니다.'],
+   ['限时快闪,记忆街区(02 区)开放,示例时间 12:00–18:00。','A limited pop-up; Memory Street (Zone 02) is open, sample hours 12:00–18:00.','기간 한정 팝업으로 기억 거리(02구역)가 열립니다. 예시 시간 12:00–18:00.'],
+   ['周边摊位、饮品小食和休息桌都在这里。','Goods stalls, drinks, snacks and rest tables are all here.','굿즈 부스, 음료와 간식, 휴식 테이블이 모두 여기 있습니다.'],
+   ['不含公演座位。','No concert seat included.','공연 좌석은 포함되지 않습니다.'],
+   ['周边在 02 区记忆街区的摊位,凭订单号领取。','Pick up goods at the Zone 02 Memory Street stalls with your order number.','굿즈는 02구역 기억 거리 부스에서 주문 번호로 수령합니다.'],
+   ['02 区记忆街区摊位,凭订单号','Zone 02 Memory Street stalls, with your order number','02구역 기억 거리 부스, 주문 번호로'],
+   ['这是课程概念提案里的演示订单,没有真实活动和扣款,请勿前往场地。','This is a demo order from a course concept proposal. There is no real event or charge; please do not go to the site.','수업 컨셉 제안 속 데모 주문입니다. 실제 행사와 결제는 없으니 현장에 가지 마세요.'],
+   ['订单号','Order no.','주문 번호'],['票务','Tickets','티켓'],['周边','Goods','굿즈'],['座位','Seat','좌석'],['周边领取','Goods pickup','굿즈 수령'],
+   ['须知','Notes','안내'],['观演人','Attendee','관람자'],['入口','Entrance','입구'],
+   ['收件人','To','수신'],['发件人','From','발신'],['主题','Subject','제목'],
+   ['你好 ','Hello ','안녕하세요 '],['你的订单已确认(演示)。','Your order is confirmed (demo).','주문이 확인되었습니다 (데모).'],
+   ['未填写手机号','no phone number','휴대폰 번호 없음'],['模拟预览','simulated preview','시뮬레이션 미리보기'],
+   ['GOODS · 周边取货单','GOODS · Pickup slip','GOODS · 굿즈 수령증'],
+   ['演示模式:邮件和短信只在这里预览,没有真正发出。部署版填入 EmailJS 设置后,邮件可以真实发送。','Demo mode: the email and SMS are only previewed here and not actually sent. With EmailJS configured in the deployed version, the email can be sent for real.','데모 모드: 메일과 문자는 여기서 미리보기만 하며 실제로 발송되지 않습니다. 배포판에서 EmailJS를 설정하면 메일을 실제로 보낼 수 있습니다.'],
+   ['邮件没有发送成功。请检查 EmailJS 的设置,或稍后再试。','The email could not be sent. Check the EmailJS settings or try again later.','메일을 보내지 못했습니다. EmailJS 설정을 확인하거나 나중에 다시 시도하세요.'],
+   /* zones */
+   ['旧入口 · 唤醒区','Old entrance · Wake-up zone','옛 입구 · 웨이크업 구역'],
+   ['检票、领取荧光棒和导览。','Check-in, light stick and guide pickup.','체크인, 응원봉과 안내 수령.'],
+   ['扳机确认入场,选择导览。','Pull the trigger to confirm entry and choose a guide.','트리거로 입장을 확인하고 안내를 고릅니다.'],
+   ['导览灯亮起,显示五区地图。','The guide light turns on and shows the five-zone map.','안내등이 켜지고 다섯 구역 지도가 표시됩니다.'],
+   ['选择「开始探索」后,入口灯光与环境声启动,引导观众前往记忆街区。','After choosing “Start exploring”, the entrance lights and ambient sound start and lead the audience to Memory Street.','「탐험 시작」을 고르면 입구 조명과 환경음이 켜지고 관객을 기억 거리로 안내합니다.'],
+   ['记忆街区','Memory Street','기억 거리'],
+   ['周边、餐饮与休憩。','Goods, food and rest.','굿즈, 식음, 휴식.'],
+   ['指向店铺标识并确认。','Point at a shop sign and confirm.','가게 표지를 가리키고 확인합니다.'],
+   ['显示餐饮、周边与休息点信息。','Shows information about food, goods and rest spots.','식음, 굿즈, 휴식 공간 정보를 보여 줍니다.'],
+   ['周边摊位提供卡带、明信片、徽章和荧光棒。餐饮点有饮品、小食与休息桌,候餐区避开通往主舞台的通道。','Goods stalls offer cassettes, postcards, badges and light sticks. Food points have drinks, snacks and rest tables, with the waiting area kept clear of the route to the main stage.','굿즈 부스에서는 카세트, 엽서, 뱃지, 응원봉을 판매합니다. 식음 코너에는 음료, 간식, 휴식 테이블이 있고 대기 구역은 메인 무대로 가는 통로를 피해 있습니다.'],
+   ['儿童 · 轻互动区','Kids · Light interaction zone','어린이 · 라이트 인터랙션 구역'],
+   ['光点追踪与应援输入。','Light-point tracking and cheer input.','빛 추적과 응원 입력.'],
+   ['选择或踩中光点,完成追踪。','Pick or step on the light points to finish the tracking.','빛의 점을 고르거나 밟아 추적을 완료합니다.'],
+   ['光点移动,结果汇入舞台光效。','The points move and the result feeds into the stage lighting.','빛의 점이 움직이고 결과가 무대 조명 효과에 반영됩니다.'],
+   ['现场使用地面感应输入,VR 使用射线选择,两个入口触发同一个互动事件。','On site it uses floor sensors, in VR it uses ray selection; both trigger the same interaction event.','현장에서는 바닥 센서 입력, VR에서는 레이 선택을 쓰며 두 방식 모두 같은 상호작용 이벤트를 발생시킵니다.'],
+   ['中庭主舞台','Atrium main stage','중정 메인 무대'],
+   ['团队公演、座位与应援。','The group show, seating and cheering.','팀 공연, 좌석, 응원.'],
+   ['选择座位,挥动应援棒或控制器。','Choose a seat and wave a light stick or controller.','좌석을 고르고 응원봉이나 컨트롤러를 흔듭니다.'],
+   ['应援输入改变粒子强度与灯光。','Cheering input changes particle intensity and lighting.','응원 입력이 파티클 강도와 조명을 바꿉니다.'],
+   ['四名成员在中央屏幕与舞台登场。座位面向舞台,保留中央和侧边通道。正式公演统一在这里观看。','The four members appear on the central screen and stage. Seats face the stage with centre and side aisles kept open. The main show is watched here.','네 멤버가 중앙 스크린과 무대에 등장합니다. 좌석은 무대를 향하며 중앙과 양옆 통로를 비워 둡니다. 본 공연은 모두 여기서 관람합니다.'],
+   ['高层回廊','Upper gallery','상층 회랑'],
+   ['高层拍照与俯瞰留念。','Photos and a bird’s-eye view from above.','상층 촬영과 내려다보는 기념.'],
+   ['选拍照位并确认,最后选择出口。','Choose a photo spot and confirm, then choose the exit.','촬영 위치를 고르고 확인한 뒤 마지막으로 출구를 고릅니다.'],
+   ['提示保存画面,复位互动并返回首页。','Prompts you to save the image, resets the interaction and returns home.','화면 저장을 안내하고 상호작용을 초기화한 뒤 처음으로 돌아갑니다.'],
+   ['A 俯瞰拍照位,固定视角记录舞台全景。B 主题文字打卡。C 屋顶备选位,可用时记录城市背景。','A: bird’s-eye photo spot with a fixed view of the whole stage. B: themed-text check-in. C: optional rooftop spot with the city behind, when available.','A 조감 촬영 위치: 고정 시점으로 무대 전체를 담습니다. B 테마 문구 체크인. C 옥상 대체 위치: 이용 가능할 때 도시 배경을 담습니다.'],
+   ['功能','Function','기능'],['观众操作','Audience action','관객 행동'],['空间反馈','Space feedback','공간 반응'],['备注','Notes','비고'],
+   /* run of show */
+   ['开放探索','Exploration','탐험'],
+   ['观众从旧入口出发,沿 01 到 03 区探索,寻找歌词与光点线索。','The audience starts from the old entrance and explores Zones 01 to 03, looking for lyrics and light clues.','관객은 옛 입구에서 출발해 01~03구역을 탐험하며 가사와 빛의 단서를 찾습니다.'],
+   ['领取荧光棒,完成光点追踪。18:55 前回到 04 区就座。','Pick up a light stick and finish the light tracking. Be seated in Zone 04 by 18:55.','응원봉을 받고 빛 추적을 마칩니다. 18:55까지 04구역 좌석으로 돌아옵니다.'],
+   ['03 区的互动结果汇入舞台光效。','Results from Zone 03 flow into the stage lighting.','03구역의 상호작용 결과가 무대 조명에 반영됩니다.'],
+   ['唤醒','Awakening','각성'],
+   ['入口亮灯,四名成员登场。','The entrance lights up and the four members appear.','입구에 불이 켜지고 네 멤버가 등장합니다.'],
+   ['确认就位,进入首曲。','Confirm you are in place and start the first song.','자리를 확인하고 첫 곡으로 들어갑니다.'],
+   ['Cue C01,切换开场素材。','Cue C01, switch to the opening material.','Cue C01, 오프닝 영상으로 전환.'],
+   ['记忆','Memory','기억'],
+   ['成员介绍,第一组歌曲。','Member introductions and the first set of songs.','멤버 소개와 첫 번째 곡 세트.'],
+   ['选择应援色。','Choose your cheer colour.','응원 색을 고릅니다.'],
+   ['音频分析控制声波和灯光。','Audio analysis drives sound waves and lights.','오디오 분석이 음파와 조명을 제어합니다.'],
+   ['共鸣','Resonance','공명'],
+   ['舞台显示 03 区的互动结果。','The stage shows the interaction results from Zone 03.','무대에 03구역의 상호작용 결과가 표시됩니다.'],
+   ['挥动控制器或荧光棒。','Wave a controller or light stick.','컨트롤러나 응원봉을 흔듭니다.'],
+   ['输入过滤,映射粒子强度。','Input is filtered and mapped to particle intensity.','입력을 필터링해 파티클 강도에 매핑합니다.'],
+   ['重启','Restart','재가동'],
+   ['第二组歌曲,节奏增强。','The second set of songs, with a stronger beat.','두 번째 곡 세트, 리듬이 강해집니다.'],
+   ['集体应援。','Cheer together.','함께 응원합니다.'],
+   ['按曲目切换 Cue 与视觉层。','Cues and visual layers switch with each song.','곡에 따라 Cue와 비주얼 레이어를 전환합니다.'],
+   ['开幕','Opening','개막'],
+   ['主题曲,旧招牌亮起「未启之音」。','The theme song; the old sign lights up with “Silent Overture”.','타이틀곡, 낡은 간판에 「사일런트 오버추어」가 켜집니다.'],
+   ['和成员共同完成终章。','Finish the finale together with the members.','멤버와 함께 피날레를 완성합니다.'],
+   ['叠加应援光效与主题文字。','Cheer light effects and theme text are layered on.','응원 조명 효과와 테마 문구를 겹쳐 올립니다.'],
+   ['谢幕','Curtain call','인사'],
+   ['结束画面,恢复导览灯。','The ending screen; guide lights return.','엔딩 화면, 안내등이 다시 켜집니다.'],
+   ['散场,准备演后拍照。','Leave your seat and get ready for photos.','퇴장하고 공연 후 촬영을 준비합니다.'],
+   ['结束 Cue,复位互动状态。','End cue; the interaction state resets.','종료 Cue, 상호작용 상태를 초기화합니다.'],
+   ['演后拍照','Photos after the show','공연 후 촬영'],
+   ['去 05 区高层回廊拍照,再按出口导览离场。','Take photos in the Zone 05 upper gallery, then leave by the exit guide.','05구역 상층 회랑에서 사진을 찍고 출구 안내에 따라 퇴장합니다.'],
+   ['选拍照位并确认。','Choose a photo spot and confirm.','촬영 위치를 고르고 확인합니다.'],
+   ['画面与演出','Visuals and show','화면과 연출'],['观众互动','Audience interaction','관객 참여'],['幕后控制','Backstage control','무대 뒤 제어'],
+   [' 分钟',' min',' 분'],
+   /* hints */
+   ['已全部恢复:普通指针,拖尾也变回最初的彩色。点一张成员卡片可以再换上应援棒。','Everything is back to normal: the cursor, and the trail in its original colours. Click a member card to put a light stick on again.','모두 되돌렸습니다: 기본 커서와 처음의 컬러 트레일. 멤버 카드를 누르면 다시 응원봉으로 바꿀 수 있습니다.'],
+   ['指针已恢复。点一张成员卡片,可以再换上应援棒。','Cursor restored. Click a member card to put a light stick on again.','커서를 되돌렸습니다. 멤버 카드를 누르면 다시 응원봉으로 바꿀 수 있습니다.'],
+   ['点一张成员卡片,换成她的应援色。之后点击页面任意位置,会迸出她颜色的光点。','Click a member card to switch to her cheer colour. After that, clicking anywhere bursts out light points in her colour.','멤버 카드를 눌러 그녀의 응원 색으로 바꾸세요. 이후 화면 아무 곳이나 누르면 그 색의 빛이 터져 나옵니다.'],
+   ['已全部恢复:彩色光点。点一张成员卡片可以再换她的应援色。','Everything is back to normal: colourful light points. Click a member card to switch to her cheer colour again.','모두 되돌렸습니다: 컬러 빛 효과. 멤버 카드를 누르면 다시 그녀의 응원 색으로 바꿀 수 있습니다.']
+  ].forEach(function(r){D[r[0]]=[r[1],r[2]]});
+  function T(zh){if(LANG==='zh'||zh==null)return zh;var r=D[zh];return r?r[LANG==='en'?0:1]:zh}
+  function L3(zh,en,ko){return LANG==='en'?en:LANG==='ko'?ko:zh}
+
+  var STATIC=[];
+  (function(){
+    var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),n;
+    while((n=w.nextNode())){
+      if(n.parentElement.closest('script,style'))continue;
+      var t=n.nodeValue.trim();if(t&&D[t])STATIC.push({n:n,zh:n.nodeValue,k:t});
+    }
+    [].slice.call(document.querySelectorAll('[aria-label],[alt],[placeholder]')).forEach(function(e){
+      ['aria-label','alt','placeholder'].forEach(function(a){var v=e.getAttribute(a);if(v&&D[v])STATIC.push({e:e,a:a,k:v})});
+    });
+  })();
+  var hintFn=null;
+  function setHint(f){hintFn=f;$('#fxhint').textContent=f()}
 
   /* ===== EmailJS 设置 =====
      留空时页面只在本页预览确认邮件和短信。
@@ -869,24 +1152,29 @@ html.loading{overflow:hidden}
 
   /* ===== zones ===== */
   var zones=[
-    {n:'01',zh:'旧入口 · 唤醒区',ko:'옛 입구 / 웨이크업 구역',fn:'检票、领取荧光棒和导览。',act:'扳机确认入场,选择导览。',fb:'导览灯亮起,显示五区地图。',note:'选择「开始探索」后,入口灯光与环境声启动,引导观众前往记忆街区。'},
-    {n:'02',zh:'记忆街区',ko:'기억 거리',fn:'周边、餐饮与休憩。',act:'指向店铺标识并确认。',fb:'显示餐饮、周边与休息点信息。',note:'周边摊位提供卡带、明信片、徽章和荧光棒。餐饮点有饮品、小食与休息桌,候餐区避开通往主舞台的通道。'},
-    {n:'03',zh:'儿童 · 轻互动区',ko:'어린이 / 라이트 인터랙션',fn:'光点追踪与应援输入。',act:'选择或踩中光点,完成追踪。',fb:'光点移动,结果汇入舞台光效。',note:'现场使用地面感应输入,VR 使用射线选择,两个入口触发同一个互动事件。'},
-    {n:'04',zh:'中庭主舞台',ko:'중정 메인 무대',fn:'团队公演、座位与应援。',act:'选择座位,挥动应援棒或控制器。',fb:'应援输入改变粒子强度与灯光。',note:'四名成员在中央屏幕与舞台登场。座位面向舞台,保留中央和侧边通道。正式公演统一在这里观看。'},
-    {n:'05',zh:'高层回廊',ko:'상층 회랑',fn:'高层拍照与俯瞰留念。',act:'选拍照位并确认,最后选择出口。',fb:'提示保存画面,复位互动并返回首页。',note:'A 俯瞰拍照位,固定视角记录舞台全景。B 主题文字打卡。C 屋顶备选位,可用时记录城市背景。'}
+    {n:'01',zh:'旧入口 · 唤醒区',fn:'检票、领取荧光棒和导览。',act:'扳机确认入场,选择导览。',fb:'导览灯亮起,显示五区地图。',note:'选择「开始探索」后,入口灯光与环境声启动,引导观众前往记忆街区。'},
+    {n:'02',zh:'记忆街区',fn:'周边、餐饮与休憩。',act:'指向店铺标识并确认。',fb:'显示餐饮、周边与休息点信息。',note:'周边摊位提供卡带、明信片、徽章和荧光棒。餐饮点有饮品、小食与休息桌,候餐区避开通往主舞台的通道。'},
+    {n:'03',zh:'儿童 · 轻互动区',fn:'光点追踪与应援输入。',act:'选择或踩中光点,完成追踪。',fb:'光点移动,结果汇入舞台光效。',note:'现场使用地面感应输入,VR 使用射线选择,两个入口触发同一个互动事件。'},
+    {n:'04',zh:'中庭主舞台',fn:'团队公演、座位与应援。',act:'选择座位,挥动应援棒或控制器。',fb:'应援输入改变粒子强度与灯光。',note:'四名成员在中央屏幕与舞台登场。座位面向舞台,保留中央和侧边通道。正式公演统一在这里观看。'},
+    {n:'05',zh:'高层回廊',fn:'高层拍照与俯瞰留念。',act:'选拍照位并确认,最后选择出口。',fb:'提示保存画面,复位互动并返回首页。',note:'A 俯瞰拍照位,固定视角记录舞台全景。B 主题文字打卡。C 屋顶备选位,可用时记录城市背景。'}
   ];
   var zb=$('#zonebtns'),zp=$('#zpanel');
-  zones.forEach(function(z,i){
-    var li=el('li'),b=el('button','zbtn');b.type='button';b.setAttribute('aria-pressed',i===3?'true':'false');b.dataset.i=i;
-    b.appendChild(el('b',null,z.n));b.appendChild(el('span',null,z.zh));li.appendChild(b);zb.appendChild(li);
-  });
+  var curZone=3;
+  function buildZoneBtns(){
+    zb.textContent='';
+    zones.forEach(function(z,i){
+      var li=el('li'),b=el('button','zbtn');b.type='button';b.setAttribute('aria-pressed',i===curZone?'true':'false');b.dataset.i=i;
+      b.appendChild(el('b',null,z.n));b.appendChild(el('span',null,T(z.zh)));li.appendChild(b);zb.appendChild(li);
+    });
+  }
+  buildZoneBtns();
   function showZone(i){
-    var z=zones[i];
+    var z=zones[i];curZone=i;
     $$('.zbtn').forEach(function(b){b.setAttribute('aria-pressed',String(+b.dataset.i===i))});
     zp.textContent='';
-    var h=el('div','zhead');h.appendChild(el('div','big',z.n));h.appendChild(el('h3',null,z.zh));h.appendChild(el('p',null,z.ko));
+    var h=el('div','zhead');h.appendChild(el('div','big',z.n));h.appendChild(el('h3',null,T(z.zh)));
     var d=el('dl','zbody');
-    [['功能',z.fn],['观众操作',z.act],['空间反馈',z.fb],['备注',z.note]].forEach(function(r){var w=el('div');w.appendChild(el('dt',null,r[0]));w.appendChild(el('dd',null,r[1]));d.appendChild(w)});
+    [['功能',z.fn],['观众操作',z.act],['空间反馈',z.fb],['备注',z.note]].forEach(function(r){var w=el('div');w.appendChild(el('dt',null,T(r[0])));w.appendChild(el('dd',null,T(r[1])));d.appendChild(w)});
     zp.appendChild(h);zp.appendChild(d);
   }
   zb.addEventListener('click',function(e){var b=e.target.closest('.zbtn');if(b)showZone(+b.dataset.i)});
@@ -902,29 +1190,34 @@ html.loading{overflow:hidden}
 
   /* ===== run of show ===== */
   var segs=[
-    {k:'off',min:30,t:'18:30–19:00',zh:'开放探索',ko:'탐색',show:'观众从旧入口出发,沿 01 到 03 区探索,寻找歌词与光点线索。',act:'领取荧光棒,完成光点追踪。18:55 前回到 04 区就座。',back:'03 区的互动结果汇入舞台光效。'},
-    {k:'c1',min:5,t:'19:00–19:05',zh:'唤醒',ko:'각성',show:'入口亮灯,四名成员登场。',act:'确认就位,进入首曲。',back:'Cue C01,切换开场素材。'},
-    {k:'c2',min:15,t:'19:05–19:20',zh:'记忆',ko:'기억',show:'成员介绍,第一组歌曲。',act:'选择应援色。',back:'音频分析控制声波和灯光。'},
-    {k:'c1',min:8,t:'19:20–19:28',zh:'共鸣',ko:'공명',show:'舞台显示 03 区的互动结果。',act:'挥动控制器或荧光棒。',back:'输入过滤,映射粒子强度。'},
-    {k:'c2',min:15,t:'19:28–19:43',zh:'重启',ko:'재가동',show:'第二组歌曲,节奏增强。',act:'集体应援。',back:'按曲目切换 Cue 与视觉层。'},
-    {k:'c1',min:12,t:'19:43–19:55',zh:'开幕',ko:'개막',show:'主题曲,旧招牌亮起「未启之音」。',act:'和成员共同完成终章。',back:'叠加应援光效与主题文字。'},
-    {k:'c2',min:5,t:'19:55–20:00',zh:'谢幕',ko:'인사',show:'结束画面,恢复导览灯。',act:'散场,准备演后拍照。',back:'结束 Cue,复位互动状态。'},
-    {k:'off',min:15,t:'20:00–20:15',zh:'演后拍照',ko:'공연 후 촬영',show:'去 05 区高层回廊拍照,再按出口导览离场。',act:'选拍照位并确认。',back:'提示保存画面,复位互动并返回首页。'}
+    {k:'off',min:30,t:'18:30–19:00',zh:'开放探索',show:'观众从旧入口出发,沿 01 到 03 区探索,寻找歌词与光点线索。',act:'领取荧光棒,完成光点追踪。18:55 前回到 04 区就座。',back:'03 区的互动结果汇入舞台光效。'},
+    {k:'c1',min:5,t:'19:00–19:05',zh:'唤醒',show:'入口亮灯,四名成员登场。',act:'确认就位,进入首曲。',back:'Cue C01,切换开场素材。'},
+    {k:'c2',min:15,t:'19:05–19:20',zh:'记忆',show:'成员介绍,第一组歌曲。',act:'选择应援色。',back:'音频分析控制声波和灯光。'},
+    {k:'c1',min:8,t:'19:20–19:28',zh:'共鸣',show:'舞台显示 03 区的互动结果。',act:'挥动控制器或荧光棒。',back:'输入过滤,映射粒子强度。'},
+    {k:'c2',min:15,t:'19:28–19:43',zh:'重启',show:'第二组歌曲,节奏增强。',act:'集体应援。',back:'按曲目切换 Cue 与视觉层。'},
+    {k:'c1',min:12,t:'19:43–19:55',zh:'开幕',show:'主题曲,旧招牌亮起「未启之音」。',act:'和成员共同完成终章。',back:'叠加应援光效与主题文字。'},
+    {k:'c2',min:5,t:'19:55–20:00',zh:'谢幕',show:'结束画面,恢复导览灯。',act:'散场,准备演后拍照。',back:'结束 Cue,复位互动状态。'},
+    {k:'off',min:15,t:'20:00–20:15',zh:'演后拍照',show:'去 05 区高层回廊拍照,再按出口导览离场。',act:'选拍照位并确认。',back:'提示保存画面,复位互动并返回首页。'}
   ];
   var TOTAL=105,bar=$('#bar'),sp=$('#spanel');
-  segs.forEach(function(s,i){
-    var b=el('button',s.k,s.min>=8?s.zh:s.zh.charAt(0));b.type='button';
-    b.style.flexBasis=(s.min/TOTAL*100)+'%';
-    b.setAttribute('aria-pressed',i===2?'true':'false');b.setAttribute('aria-label',s.t+' '+s.zh+','+s.min+' 分钟');b.dataset.i=i;
-    bar.appendChild(b);
-  });
+  var curSeg=2;
+  function buildBar(){
+    bar.textContent='';
+    segs.forEach(function(s,i){
+      var nm=T(s.zh),b=el('button',s.k,s.min>=8?nm:nm.charAt(0));b.type='button';
+      b.style.flexBasis=(s.min/TOTAL*100)+'%';
+      b.setAttribute('aria-pressed',i===curSeg?'true':'false');b.setAttribute('aria-label',s.t+' '+nm+', '+s.min+T(' 分钟'));b.dataset.i=i;
+      bar.appendChild(b);
+    });
+  }
+  buildBar();
   [[0,'18:30'],[30,'19:00'],[90,'20:00'],[105,'20:15']].forEach(function(p){var s=el('span',null,p[1]);s.style.left=(p[0]/TOTAL*100)+'%';$('#ticks').appendChild(s)});
   function showSeg(i){
-    var s=segs[i];
+    var s=segs[i];curSeg=i;
     $$('#bar button').forEach(function(b){b.setAttribute('aria-pressed',String(+b.dataset.i===i))});
     sp.textContent='';
-    var a=el('div');a.appendChild(el('p','t',s.t+' · '+s.min+' 分钟'));a.appendChild(el('h3',null,s.zh));a.appendChild(el('p','t',s.ko));sp.appendChild(a);
-    [['画面与演出',s.show],['观众互动',s.act],['幕后控制',s.back]].forEach(function(r){var w=el('dl');var d=el('div');d.appendChild(el('dt',null,r[0]));d.appendChild(el('dd',null,r[1]));w.appendChild(d);sp.appendChild(w)});
+    var a=el('div');a.appendChild(el('p','t',s.t+' · '+s.min+T(' 分钟')));a.appendChild(el('h3',null,T(s.zh)));sp.appendChild(a);
+    [['画面与演出',s.show],['观众互动',s.act],['幕后控制',s.back]].forEach(function(r){var w=el('dl');var d=el('div');d.appendChild(el('dt',null,T(r[0])));d.appendChild(el('dd',null,T(r[1])));w.appendChild(d);sp.appendChild(w)});
   }
   bar.addEventListener('click',function(e){var b=e.target.closest('button');if(b)showSeg(+b.dataset.i)});
   showSeg(2);
@@ -936,11 +1229,12 @@ html.loading{overflow:hidden}
     $$('.card').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});
     cheer={name:b.dataset.name,c:b.dataset.c};
     root.style.setProperty('--cheer',cheer.c);
-    $('#cheerlbl').textContent='应援色 · '+cheer.name;
+    setCheerLbl();
     var rr=b.getBoundingClientRect();
     setMember(cheer.name,cheer.c,e.clientX||rr.left+rr.width/2,e.clientY||rr.top+rr.height/2);
   });
   root.style.setProperty('--cheer',cheer.c);
+  function setCheerLbl(){$('#cheerlbl').textContent=T('应援色')+' · '+cheer.name}
 
   /* ===== effects: scroll ===== */
   var fine=matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -950,9 +1244,10 @@ html.loading{overflow:hidden}
   function pageTop(e){var t=0;while(e){t+=e.offsetTop;e=e.offsetParent}return t}
   /* scroll-linked reveal: progress comes from scroll position, so wheel and touch behave the same */
   var RV=reduce?[]:$$('.sec>.eyebrow,.sec>.sub,.beats li,.photo,.card,.ev,.facts>div,.cta,.pull,.archive,.tier,.mapbox,.faq,.ring,.cartbox').map(function(e){e.classList.add('rv');return{e:e,top:0,p:-1}});
-  function splitText(h){
-    var txt=h.textContent.replace(/\s+/g,' ').trim();
-    h.setAttribute('aria-label',txt);h.textContent='';
+  function splitText(h,txt,again){
+    if(txt==null){txt=h.textContent.replace(/\s+/g,' ').trim();h.dataset.zh=txt}
+    if(!h.closest('h1'))h.setAttribute('aria-label',txt);
+    h.textContent='';
     var n=0,LAT=/^[A-Za-z0-9’'.,:!?\-·&]+$/;
     (txt.match(/[A-Za-z0-9’'.,:!?\-·&]+|\s|[\s\S]/g)||[]).forEach(function(t){
       if(t===' '){h.appendChild(document.createTextNode(' '));return}
@@ -973,8 +1268,8 @@ html.loading{overflow:hidden}
   }
   function rvMeasure(){RV.forEach(function(it){it.top=pageTop(it.e)});SP.forEach(function(it){it.top=pageTop(it.e)});rnMeasure()}
   function rvFx(y){
-    RV.forEach(function(it){var p=clamp((vh*0.94-(it.top-y))/(vh*0.3),0,1);if(Math.abs(p-it.p)>0.004||(p===1&&it.p!==1)||(p===0&&it.p!==0)){it.p=p;it.e.style.setProperty('--rp',p.toFixed(3))}});
-    SP.forEach(function(it){var p=clamp((vh*0.92-(it.top-y))/(vh*0.26),0,1);if(Math.abs(p-it.p)>0.004||(p===1&&it.p!==1)||(p===0&&it.p!==0)){it.p=p;it.e.style.setProperty('--hp',p.toFixed(3));it.e.classList.toggle('shown',p>=1)}});
+    RV.forEach(function(it){var p=Math.max(it.p,clamp((vh*0.94-(it.top-y))/(vh*0.3),0,1));if(Math.abs(p-it.p)>0.004||(p===1&&it.p!==1)||(p===0&&it.p!==0)){it.p=p;it.e.style.setProperty('--rp',p.toFixed(3))}});
+    SP.forEach(function(it){var p=Math.max(it.p,clamp((vh*0.92-(it.top-y))/(vh*0.26),0,1));if(Math.abs(p-it.p)>0.004||(p===1&&it.p!==1)||(p===0&&it.p!==0)){it.p=p;it.e.style.setProperty('--hp',p.toFixed(3));it.e.classList.toggle('shown',p>=1)}});
   }
 
   /* ===== renovation scene: old atrium to new, driven by scroll with eased follow ===== */
@@ -993,7 +1288,8 @@ html.loading{overflow:hidden}
   }
   if(rn&&reduce){rn.classList.add('static');rn.style.setProperty('--q','1');rn.style.setProperty('--rr','4000px');rnZ.forEach(function(z){z.classList.add('on')})}
   var marqs=$$('.marq-in');
-  marqs.forEach(function(m){var s='';for(var i=0;i<8;i++)s+=m.dataset.text;m.textContent=s});
+  function buildMarq(m){var t=LANG==='zh'?m.dataset.text:(D[m.dataset.text]?D[m.dataset.text][LANG==='en'?0:1]:m.dataset.text),s='';for(var i=0;i<8;i++)s+=t;m.textContent=s}
+  marqs.forEach(buildMarq);
   var par=[{e:$('.hero-art'),f:-0.07},{e:$('.logo .big'),f:0.05}].concat($$('.spark').map(function(s,i){return{e:s,f:i?0.14:-0.12}}));
   function scrollFx(){
     sTick=false;
@@ -1078,16 +1374,17 @@ html.loading{overflow:hidden}
   function deactivateStick(){
     stickOn=false;stick.innerHTML='';svgEl=null;stickShown=false;stick.style.visibility='hidden';
     root.classList.remove('has-stick');$('#stickoff').hidden=true;
-    $('#fxhint').textContent='指针已恢复。点一张成员卡片,可以再换上应援棒。';
+    setHint(function(){return T('指针已恢复。点一张成员卡片,可以再换上应援棒。')});
   }
   function setMember(name,c,x,y){
     trailCols=[c,lighten(c,.45),'#FFFFFF'];bound=true;$('#stickoff').hidden=false;
-    var hint=$('#fxhint');
-    if(fine){activateStick(name,c);hint.textContent=reduce?'指针已换成 '+name+' 的应援棒。右键、Esc 或旁边的按钮都可以恢复。':'指针已换成 '+name+' 的应援棒,拖尾也变成她的颜色。右键、Esc 或旁边的按钮都可以恢复。'}
-    else{hint.textContent='应援色换成了 '+name+'。点击页面任意位置,会迸出她颜色的光点。点旁边的按钮可以恢复。'}
+    if(fine){activateStick(name,c);setHint(function(){return reduce
+      ?L3('指针已换成 '+name+' 的应援棒。右键、Esc 或旁边的按钮都可以恢复。','The cursor is now '+name+'’s light stick. Right-click, Esc or the button beside it restores it.','커서가 '+name+'의 응원봉으로 바뀌었습니다. 오른쪽 클릭, Esc 또는 옆 버튼으로 되돌릴 수 있습니다.')
+      :L3('指针已换成 '+name+' 的应援棒,拖尾也变成她的颜色。右键、Esc 或旁边的按钮都可以恢复。','The cursor is now '+name+'’s light stick, and the trail takes her colour. Right-click, Esc or the button beside it restores everything.','커서가 '+name+'의 응원봉으로 바뀌고 트레일도 그녀의 색이 되었습니다. 오른쪽 클릭, Esc 또는 옆 버튼으로 모두 되돌릴 수 있습니다.')})}
+    else{setHint(function(){return L3('应援色换成了 '+name+'。点击页面任意位置,会迸出她颜色的光点。点旁边的按钮可以恢复。','Cheer colour set to '+name+'. Tap anywhere to burst out light points in her colour. Tap the button beside to restore.','응원 색이 '+name+'(으)로 바뀌었습니다. 화면 아무 곳이나 누르면 그 색의 빛이 터져 나옵니다. 옆 버튼으로 되돌릴 수 있습니다.')})}
     spawn(x,y,28,true);
   }
-  if(!fine)$('#fxhint').textContent='点一张成员卡片,换成她的应援色。之后点击页面任意位置,会迸出她颜色的光点。';
+  if(!fine)setHint(function(){return T('点一张成员卡片,换成她的应援色。之后点击页面任意位置,会迸出她颜色的光点。')});
   document.addEventListener('pointermove',function(e){
     if(e.pointerType==='touch')return;
     var x=e.clientX,y=e.clientY;
@@ -1111,7 +1408,7 @@ html.loading{overflow:hidden}
     parts.forEach(function(p){p.c=TRAIL0[(Math.random()*TRAIL0.length)|0]});
     if(stickOn)deactivateStick();
     $('#stickoff').hidden=true;
-    $('#fxhint').textContent='已全部恢复:普通指针,拖尾也变回最初的彩色。点一张成员卡片可以再换上应援棒。';
+    setHint(function(){return fine?T('已全部恢复:普通指针,拖尾也变回最初的彩色。点一张成员卡片可以再换上应援棒。'):T('已全部恢复:彩色光点。点一张成员卡片可以再换她的应援色。')});
   }
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&bound)resetBinding()});
   $('#stickoff').addEventListener('click',resetBinding);
@@ -1124,7 +1421,7 @@ html.loading{overflow:hidden}
   var EVENTS={
     live:{short:'2026.12.16 19:00',long:'2026年12月16日(周三)19:00',gate:'01 区检票',
       tips:['18:30 起开放探索,从 01 区检票并领取荧光棒。','19:00 开演,请在 18:55 前回到 04 区就座。','演后预留 15 分钟,可去 05 区高层回廊拍照。']},
-    pop:{short:'2026.11.22 12:00–18:00',long:'2026年11月22日(周日)12:00–18:00(示例)',gate:'01 区登记',
+    pop:{short:'2026.12.16 12:00–18:00',long:'2026年12月16日(周三)12:00–18:00(示例)',gate:'01 区登记',
       tips:['限时快闪,记忆街区(02 区)开放,示例时间 12:00–18:00。','周边摊位、饮品小食和休息桌都在这里。','不含公演座位。']}
   };
   var GOODS_TIP='周边在 02 区记忆街区的摊位,凭订单号领取。';
@@ -1144,7 +1441,7 @@ html.loading{overflow:hidden}
   ];
   GOODS.forEach(function(g){g.v=0});
   function gimg(g){return 'assets/'+g.vars[g.v].img+'.jpg'}
-  function money(n){return n===0?'免费':'₩'+n.toLocaleString('en-US')}
+  function money(n){return n===0?T('免费'):'₩'+n.toLocaleString('en-US')}
 
   /* ===== toast ===== */
   var toastT=0;
@@ -1155,21 +1452,22 @@ html.loading{overflow:hidden}
   function cartAdd(line){
     var f=cart.filter(function(l){return l.key===line.key})[0];
     if(f){f.qty=Math.min(f.max,f.qty+line.qty)}else{cart.push(line)}
-    renderCart();toast('已加入购物车:'+line.name+' × '+line.qty);
+    renderCart();toast(T('已加入购物车:')+T(line.name)+' × '+line.qty);
   }
   function sumOf(kind){return cart.reduce(function(a,l){return a+(kind&&l.kind!==kind?0:l.price*l.qty)},0)}
+  function lsub(l){return l.kind==='t'?EVENTS[TIERS[l.tier].ev].short:T(l.vn)+' · '+money(l.price)}
   function renderCart(){
     var box=$('#cartlines');box.textContent='';
-    if(!cart.length){box.appendChild(el('p','cart-empty','购物车是空的。上面选一个票档,或者在周边展示里挑一件。'))}
+    if(!cart.length){box.appendChild(el('p','cart-empty',T('购物车是空的。上面选一个票档,或者在周边展示里挑一件。')))}
     cart.forEach(function(l,i){
       var row=el('div','cl'),im=el('img');im.src=l.img;im.alt='';im.width=54;im.height=54;
-      var nm=el('div','nm');nm.appendChild(el('b',null,l.name));nm.appendChild(el('small',null,l.sub));
+      var nm=el('div','nm');nm.appendChild(el('b',null,T(l.name)));nm.appendChild(el('small',null,lsub(l)));
       var ctl=el('div','ctl'),q=el('div','qty'),mi=el('button',null,'−'),ou=el('output',null,String(l.qty)),pl=el('button',null,'+');
-      mi.type='button';pl.type='button';mi.setAttribute('aria-label','减少 '+l.name);pl.setAttribute('aria-label','增加 '+l.name);
+      mi.type='button';pl.type='button';mi.setAttribute('aria-label',T('减少')+' '+T(l.name));pl.setAttribute('aria-label',T('增加')+' '+T(l.name));
       mi.addEventListener('click',function(){if(l.qty>1){l.qty--;renderCart()}});
       pl.addEventListener('click',function(){if(l.qty<l.max){l.qty++;renderCart()}});
       q.appendChild(mi);q.appendChild(ou);q.appendChild(pl);
-      var rm=el('button','x','移除');rm.type='button';rm.setAttribute('aria-label','移除 '+l.name);
+      var rm=el('button','x',T('移除'));rm.type='button';rm.setAttribute('aria-label',T('移除')+' '+T(l.name));
       rm.addEventListener('click',function(){cart.splice(i,1);renderCart()});
       ctl.appendChild(q);ctl.appendChild(rm);
       row.appendChild(im);row.appendChild(nm);row.appendChild(el('div','lp',money(l.price*l.qty)));row.appendChild(ctl);
@@ -1190,7 +1488,7 @@ html.loading{overflow:hidden}
   function curKey(){return $('input[name="tier"]:checked').value}
   function render(){
     var t=TIERS[curKey()];
-    $('#s-name').textContent=t.name;$('#s-qty').textContent=qty+' 张';$('#qty').textContent=qty;
+    $('#s-name').textContent=T(t.name);$('#s-qty').textContent=L3(qty+' 张',qty+(qty>1?' tickets':' ticket'),qty+'장');$('#qty').textContent=qty;
     $('#s-when').textContent=EVENTS[t.ev].short;$('#s-total').textContent=money(t.price*qty);
   }
   $$('input[name="tier"]').forEach(function(r){r.addEventListener('change',render)});
@@ -1201,17 +1499,20 @@ html.loading{overflow:hidden}
     cartAdd({key:'t:'+k,kind:'t',tier:k,name:t.name,sub:EVENTS[t.ev].short,price:t.price,qty:qty,max:4,img:'assets/poster.jpg'});
     qty=1;render();
   });
-  $('#privacy').textContent=LIVE?'邮箱用于发送确认邮件。手机号只用于下面的短信预览,不会发送。':'邮箱和手机号只用来生成下面的预览,页面不会保存,也不会发给任何人。';
+  function setPrivacy(){$('#privacy').textContent=T(LIVE?'邮箱用于发送确认邮件。手机号只用于下面的短信预览,不会发送。':'邮箱和手机号只用来生成下面的预览,页面不会保存,也不会发给任何人。')}
+  setPrivacy();
   render();renderCart();
 
   /* ===== 3D goods ring ===== */
   var stage=$('#ringstage'),TAU=Math.PI*2,N=GOODS.length,STEP=TAU/N,rot=0,rv=0,sel=-1,gotoR=null,dragging=false,hover=false,focusIn=false,ringVis=false,ringRaf=0,rLast=0,IW=200,RX=300,frontI=-1;
-  var AUTO=0.24;
+  var AUTO=-0.24;
   var tiles=GOODS.map(function(g,i){
-    var b=el('button','ri');b.type='button';b.setAttribute('aria-label',g.name+','+money(g.price)+',点击放大选购');
+    var b=el('button','ri');b.type='button';
     var im=el('img');im.alt='';im.draggable=false;im.src=gimg(g);im.width=200;im.height=260;
     b.appendChild(im);b.appendChild(el('span','rnm',g.name));stage.appendChild(b);return b;
   });
+  function tilesLabel(t,i){var g=GOODS[i];t.setAttribute('aria-label',T(g.name)+', '+money(g.price)+', '+T('点击放大选购'));t.querySelector('.rnm').textContent=T(g.name)}
+  tiles.forEach(function(t,i){tilesLabel(t,i)});
   function wrapA(a){a=a%TAU;if(a>Math.PI)a-=TAU;if(a<-Math.PI)a+=TAU;return a}
   function layoutRing(){var w=stage.clientWidth;IW=clamp(w*0.2,104,210);RX=Math.min(w*0.36,430);stage.style.setProperty('--iw',IW+'px')}
   function placeRing(){
@@ -1228,7 +1529,7 @@ html.loading{overflow:hidden}
     });
     if(bi!==frontI){
       frontI=bi;tiles.forEach(function(t,i){t.classList.toggle('front',i===bi)});
-      var g=GOODS[bi];$('#ringlbl').textContent='';var lb=$('#ringlbl');lb.appendChild(document.createTextNode(g.name+' · '+g.en));lb.appendChild(el('em',null,money(g.price)));
+      var g=GOODS[bi];$('#ringlbl').textContent='';var lb=$('#ringlbl');lb.appendChild(document.createTextNode(LANG==='en'?g.en:T(g.name)+' · '+g.en));lb.appendChild(el('em',null,money(g.price)));
     }
   }
   function ringStep(now){
@@ -1271,7 +1572,7 @@ html.loading{overflow:hidden}
   stage.addEventListener('focusin',function(){focusIn=true});stage.addEventListener('focusout',function(){focusIn=false});
   tiles.forEach(function(t,i){t.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();selectItem(i)}})});
   $('#ring').addEventListener('keydown',function(e){
-    if(e.key==='ArrowRight')stepRing(1);else if(e.key==='ArrowLeft')stepRing(-1);else if(e.key==='Escape'&&sel>=0)closeDetail();else return;
+    if(e.key==='ArrowRight')stepRing(1);else if(e.key==='ArrowLeft')stepRing(-1);else if(e.key==='Escape'&&sel>=0)closeDetail(true);else return;
     e.preventDefault();
   });
   function stepRing(dir){
@@ -1289,16 +1590,16 @@ html.loading{overflow:hidden}
     var d=$('#gdetail');
     if(!keepScroll){var r=d.getBoundingClientRect();if(r.bottom>window.innerHeight||r.top<0)d.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'})}
   }
-  function closeDetail(){sel=-1;$('#gdetail').hidden=true;kickRing()}
+  function closeDetail(back){sel=-1;$('#gdetail').hidden=true;kickRing();if(back===true)stage.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'})}
   function showDetail(){
     var g=GOODS[sel],d=$('#gdetail');d.hidden=false;
-    $('#gd-img').src=gimg(g);$('#gd-img').alt=g.name;
-    $('#gd-en').textContent=g.en;$('#gd-name').textContent=g.name;$('#gd-desc').textContent=g.desc;
-    $('#gd-price').textContent=money(g.price);$('#gd-tag').textContent=g.official?'官网周边价':'概念设计 · 示例价';
+    $('#gd-img').src=gimg(g);$('#gd-img').alt=T(g.name);
+    $('#gd-en').textContent=g.en;$('#gd-name').textContent=T(g.name);$('#gd-desc').textContent=T(g.desc);
+    $('#gd-price').textContent=money(g.price);$('#gd-tag').textContent=T(g.official?'官网周边价':'概念设计 · 示例价');
     $('#gq').textContent=gq;
     var vb=$('#gd-vars');vb.textContent='';
     g.vars.forEach(function(v,vi){
-      var b=el('button',null,v.n);b.type='button';b.style.setProperty('--c',v.c);b.setAttribute('aria-pressed',String(vi===g.v));
+      var b=el('button',null,T(v.n));b.type='button';b.style.setProperty('--c',v.c);b.setAttribute('aria-pressed',String(vi===g.v));
       var dot=el('i');b.insertBefore(dot,b.firstChild);
       b.addEventListener('click',function(){g.v=vi;tiles[sel].firstChild.src=gimg(g);showDetail()});
       vb.appendChild(b);
@@ -1306,81 +1607,95 @@ html.loading{overflow:hidden}
   }
   $('#gq-minus').addEventListener('click',function(){if(gq>1){gq--;$('#gq').textContent=gq}});
   $('#gq-plus').addEventListener('click',function(){if(gq<10){gq++;$('#gq').textContent=gq}});
-  $('#gd-close').addEventListener('click',closeDetail);
+  $('#gd-close').addEventListener('click',function(){closeDetail(true)});
   $('#gd-add').addEventListener('click',function(){
     if(sel<0)return;var g=GOODS[sel],v=g.vars[g.v];
-    cartAdd({key:'g:'+g.id+':'+v.k,kind:'g',name:g.name,sub:v.n+' · '+money(g.price),price:g.price,qty:gq,max:10,img:gimg(g)});
+    cartAdd({key:'g:'+g.id+':'+v.k,kind:'g',name:g.name,vn:v.n,sub:'',price:g.price,qty:gq,max:10,img:gimg(g)});
     gq=1;$('#gq').textContent=1;
   });
 
   /* ===== checkout ===== */
+  var lastO=null,statKey='',statMail='';
+  function seatStr(l){
+    if(!l.hasSeat)return T('无座位(自由参观)');
+    var r=l.row,a=l.s0,rng=a+(l.qty>1?'–'+(a+l.qty-1):'');
+    return L3('04 区 · 第 '+r+' 排 '+rng+' 座','Zone 04 · Row '+r+', seat '+rng,'04구역 · '+r+'열 '+rng+'번');
+  }
   function makeOrder(lines){
     var id='SO-'+Math.random().toString(36).slice(2,8).toUpperCase(),n=parseInt(id.slice(3),36)||7;
     var tix=lines.filter(function(l){return l.kind==='t'}),gds=lines.filter(function(l){return l.kind==='g'});
     tix.forEach(function(l,i){
-      var t=TIERS[l.tier];
-      if(t.seat){var row=1+(n+i*3)%14,s0=1+Math.floor((n+i*5)/14)%18;l.seat='04 区 · 第 '+row+' 排 '+s0+(l.qty>1?'–'+(s0+l.qty-1):'')+' 座'}
-      else l.seat='无座位(自由参观)';
+      var t=TIERS[l.tier];l.hasSeat=!!t.seat;
+      if(t.seat){l.row=1+(n+i*3)%14;l.s0=1+Math.floor((n+i*5)/14)%18}
     });
     var tt=tix.reduce(function(a,l){return a+l.price*l.qty},0),gt=gds.reduce(function(a,l){return a+l.price*l.qty},0);
     return{id:id,tix:tix,gds:gds,tt:tt,gt:gt,total:tt+gt,name:$('#f-name').value.trim(),email:$('#f-mail').value.trim(),tel:$('#f-tel').value.trim(),cheer:cheer.name};
   }
   function evKeys(o){var k=[];o.tix.forEach(function(l){var e=TIERS[l.tier].ev;if(k.indexOf(e)<0)k.push(e)});return k}
   function compose(o){
-    var subject='【未启之音】订单 '+o.id+' 已确认(演示)';
-    var rows=[['订单号',o.id]];
-    o.tix.forEach(function(l){rows.push(['票务',l.name+' × '+l.qty]);rows.push(['场次',EVENTS[TIERS[l.tier].ev].long]);rows.push(['座位',l.seat])});
-    o.gds.forEach(function(l){rows.push(['周边',l.name+'('+l.sub.split(' · ')[0]+') × '+l.qty])});
-    if(o.gds.length)rows.push(['周边领取','02 区记忆街区摊位,凭订单号']);
-    if(o.tix.length&&o.gds.length){rows.push(['票务小计',money(o.tt)]);rows.push(['周边小计',money(o.gt)])}
-    rows.push(['合计',money(o.total)]);
-    if(o.tix.length)rows.push(['应援色',o.cheer]);
-    var tips=[];evKeys(o).forEach(function(k){EVENTS[k].tips.forEach(function(t){tips.push(t)})});
-    if(o.gds.length)tips.push(GOODS_TIP);
-    var fine='这是课程概念提案里的演示订单,没有真实活动和扣款,请勿前往场地。';
-    var names=o.tix.concat(o.gds).map(function(l){return l.name+'×'+l.qty}).join('、');
-    var sms='【未启之音】订单'+o.id+'已确认:'+names+'。演示短信,非真实订单。';
-    var text='你好 '+o.name+',\n你的订单已确认(演示)。\n\n'+rows.map(function(r){return r[0]+':'+r[1]}).join('\n')+'\n\n须知:\n- '+tips.join('\n- ')+'\n\n'+fine;
-    return{subject:subject,rows:rows,tips:tips,fine:fine,sms:sms,text:text,names:names};
+    var id=o.id,zh=LANG==='zh',colon=zh?':':': ';
+    var subject=L3('【未启之音】订单 '+id+' 已确认(演示)','[Silent Overture] Order '+id+' confirmed (demo)','[사일런트 오버추어] 주문 '+id+' 확인 (데모)');
+    var rows=[[T('订单号'),id]];
+    o.tix.forEach(function(l){var ev=EVENTS[TIERS[l.tier].ev];rows.push([T('票务'),T(l.name)+' × '+l.qty]);rows.push([T('场次'),T(ev.long)]);rows.push([T('座位'),seatStr(l)])});
+    o.gds.forEach(function(l){rows.push([T('周边'),T(l.name)+' ('+T(l.vn)+') × '+l.qty])});
+    if(o.gds.length)rows.push([T('周边领取'),T('02 区记忆街区摊位,凭订单号')]);
+    if(o.tix.length&&o.gds.length){rows.push([T('票务小计'),money(o.tt)]);rows.push([T('周边小计'),money(o.gt)])}
+    rows.push([T('合计'),money(o.total)]);
+    if(o.tix.length)rows.push([T('应援色'),o.cheer]);
+    var tips=[];evKeys(o).forEach(function(k){EVENTS[k].tips.forEach(function(t){tips.push(T(t))})});
+    if(o.gds.length)tips.push(T(GOODS_TIP));
+    var fine=T('这是课程概念提案里的演示订单,没有真实活动和扣款,请勿前往场地。');
+    var names=o.tix.concat(o.gds).map(function(l){return T(l.name)+'×'+l.qty}).join(zh?'、':', ');
+    var sms=L3('【未启之音】订单'+id+'已确认:'+names+'。演示短信,非真实订单。','[Silent Overture] Order '+id+' confirmed: '+names+'. Demo SMS, not a real order.','[사일런트 오버추어] 주문 '+id+' 확인: '+names+'. 데모 문자이며 실제 주문이 아닙니다.');
+    var hello=T('你好 ')+o.name+(zh?',':',');
+    var text=hello+'\n'+T('你的订单已确认(演示)。')+'\n\n'+rows.map(function(r){return r[0]+colon+r[1]}).join('\n')+'\n\n'+T('须知')+colon+'\n- '+tips.join('\n- ')+'\n\n'+fine;
+    return{subject:subject,rows:rows,tips:tips,fine:fine,sms:sms,text:text,names:names,hello:hello};
   }
   function fill(o,m){
-    var kinds=(o.tix.length?'电子票 '+o.tix.length+' 类':'')+(o.tix.length&&o.gds.length?' + ':'')+(o.gds.length?'周边 '+o.gds.length+' 件类':'');
-    $('#done-sub').textContent='订单 '+o.id+' · '+kinds+' · 下面是确认邮件和短信的预览';
+    var parts=[];if(o.tix.length)parts.push(L3('电子票','e-tickets','전자 티켓'));if(o.gds.length)parts.push(L3('周边','goods','굿즈'));
+    $('#done-sub').textContent=L3('订单 '+o.id+' · '+parts.join(' + ')+' · 下面是确认邮件和短信的预览','Order '+o.id+' · '+parts.join(' + ')+' · below is a preview of the confirmation email and SMS','주문 '+o.id+' · '+parts.join(' + ')+' · 아래는 확인 메일과 문자의 미리보기입니다');
     var et=$('#etickets');et.textContent='';
     o.tix.forEach(function(l){
       var t=TIERS[l.tier],ev=EVENTS[t.ev],card=el('div','eticket'),top=el('div','top2');
-      top.style.background=cheer.c;top.appendChild(el('span',null,'E-TICKET · 示例'));top.appendChild(el('span',null,o.id));
-      card.appendChild(top);card.appendChild(el('h4',null,l.name+(l.qty>1?' × '+l.qty:'')));
-      var dl=el('dl');[['观演人',o.name],['场次',ev.short],['入口',ev.gate],['座位',l.seat],['应援色',o.cheer]].forEach(function(r){var d=el('div');d.appendChild(el('dt',null,r[0]));d.appendChild(el('dd',null,r[1]));dl.appendChild(d)});
+      top.style.background=cheer.c;top.appendChild(el('span',null,'E-TICKET · '+L3('示例','SAMPLE','예시')));top.appendChild(el('span',null,o.id));
+      card.appendChild(top);card.appendChild(el('h4',null,T(l.name)+(l.qty>1?' × '+l.qty:'')));
+      var dl=el('dl');[[T('观演人'),o.name],[T('场次'),ev.short],[T('入口'),T(ev.gate)],[T('座位'),seatStr(l)],[T('应援色'),o.cheer]].forEach(function(r){var d=el('div');d.appendChild(el('dt',null,r[0]));d.appendChild(el('dd',null,r[1]));dl.appendChild(d)});
       card.appendChild(dl);var bc=el('div','barcode');bc.setAttribute('aria-hidden','true');card.appendChild(bc);et.appendChild(card);
     });
     var rc=$('#receipt');rc.textContent='';
     if(o.gds.length){
-      var box=el('div','receipt');box.appendChild(el('h4',null,'GOODS · 周边取货单'));
-      var ul=el('ul');o.gds.forEach(function(l){var li=el('li');li.appendChild(el('span',null,l.name+'('+l.sub.split(' · ')[0]+') × '+l.qty));li.appendChild(el('b',null,money(l.price*l.qty)));ul.appendChild(li)});
-      box.appendChild(ul);box.appendChild(el('p',null,GOODS_TIP+'订单号 '+o.id+'。'));rc.appendChild(box);
+      var box=el('div','receipt');box.appendChild(el('h4',null,T('GOODS · 周边取货单')));
+      var ul=el('ul');o.gds.forEach(function(l){var li=el('li');li.appendChild(el('span',null,T(l.name)+' ('+T(l.vn)+') × '+l.qty));li.appendChild(el('b',null,money(l.price*l.qty)));ul.appendChild(li)});
+      box.appendChild(ul);box.appendChild(el('p',null,T(GOODS_TIP)+' '+L3('订单号 ','Order no. ','주문 번호 ')+o.id+'.'));rc.appendChild(box);
     }
-
     var pm=$('#pane-mail');pm.textContent='';
     var mail=el('div','mail'),hd=el('div','hd');
-    [['发件人','SILENT OVERTURE 票务 <tickets@silent-overture.example>'],['收件人',o.email],['主题',m.subject]].forEach(function(r){var p=el('p');p.appendChild(el('span',null,r[0]+' '));p.appendChild(el('b',null,r[1]));hd.appendChild(p)});
+    [[T('发件人'),L3('SILENT OVERTURE 票务','SILENT OVERTURE Tickets','SILENT OVERTURE 티켓')+' <tickets@silent-overture.example>'],[T('收件人'),o.email],[T('主题'),m.subject]].forEach(function(r){var p=el('p');p.appendChild(el('span',null,r[0]+' '));p.appendChild(el('b',null,r[1]));hd.appendChild(p)});
     var bd=el('div','bd');
-    bd.appendChild(el('p',null,'你好 '+o.name+','));bd.appendChild(el('p',null,'你的订单已确认(演示)。'));
+    bd.appendChild(el('p',null,m.hello));bd.appendChild(el('p',null,T('你的订单已确认(演示)。')));
     var tb=el('table');m.rows.forEach(function(r){var tr=el('tr');tr.appendChild(el('td',null,r[0]));tr.appendChild(el('td',null,r[1]));tb.appendChild(tr)});bd.appendChild(tb);
-    bd.appendChild(el('p',null,'须知'));var ul2=el('ul');m.tips.forEach(function(t){ul2.appendChild(el('li',null,t))});bd.appendChild(ul2);
+    bd.appendChild(el('p',null,T('须知')));var ul2=el('ul');m.tips.forEach(function(t){ul2.appendChild(el('li',null,t))});bd.appendChild(ul2);
     bd.appendChild(el('p','fine',m.fine));
     mail.appendChild(hd);mail.appendChild(bd);pm.appendChild(mail);
-
     var ps=$('#pane-sms');ps.textContent='';
-    var sw=el('div','sms');sw.appendChild(el('p','who','收件人 '+(o.tel||'(未填写手机号)')+' · 模拟预览'));sw.appendChild(el('p','bub',m.sms));ps.appendChild(sw);
+    var sw=el('div','sms');sw.appendChild(el('p','who',T('收件人')+' '+(o.tel||'('+T('未填写手机号')+')')+' · '+T('模拟预览')));sw.appendChild(el('p','bub',m.sms));ps.appendChild(sw);
   }
-  function setStatus(txt,ok){var s=$('#status');s.textContent=txt;s.className='status'+(ok?' ok':'')}
+  function setStatus(k,mail){
+    statKey=k;statMail=mail||'';
+    var txt={
+      sending:L3('正在发送确认邮件到 '+statMail+' …','Sending the confirmation email to '+statMail+' …',statMail+'(으)로 확인 메일을 보내는 중…'),
+      ok:L3('确认邮件已发送到 '+statMail+'。短信只做了预览,没有发送。','The confirmation email was sent to '+statMail+'. The SMS is only a preview and was not sent.','확인 메일을 '+statMail+'(으)로 보냈습니다. 문자는 미리보기일 뿐 발송되지 않았습니다.'),
+      fail:T('邮件没有发送成功。请检查 EmailJS 的设置,或稍后再试。'),
+      demo:T('演示模式:邮件和短信只在这里预览,没有真正发出。部署版填入 EmailJS 设置后,邮件可以真实发送。')
+    }[k]||'';
+    var s=$('#status');s.textContent=txt;s.className='status'+(k==='ok'?' ok':'');
+  }
   function loadSdk(){
     if(window.emailjs)return Promise.resolve();
     return new Promise(function(res,rej){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js';s.onload=res;s.onerror=function(){rej(new Error('sdk'))};document.head.appendChild(s)});
   }
   function sendReal(o,m){
-    var shows=evKeys(o).map(function(k){return EVENTS[k].long}).join(' / ')||'无',seats=o.tix.map(function(l){return l.seat}).join(' / ')||'无座位';
+    var shows=evKeys(o).map(function(k){return T(EVENTS[k].long)}).join(' / ')||'-',seats=o.tix.map(seatStr).join(' / ')||'-';
     var q=o.tix.concat(o.gds).reduce(function(a,l){return a+l.qty},0);
     return loadSdk().then(function(){
       return window.emailjs.send(EMAILJS.serviceId,EMAILJS.templateId,{
@@ -1399,19 +1714,16 @@ html.loading{overflow:hidden}
 
   function checkout(scope){
     var lines=cart.filter(function(l){return scope==='all'||(scope==='t'?l.kind==='t':l.kind==='g')});
-    if(!lines.length){toast('没有可结算的内容');return}
+    if(!lines.length){toast(T('没有可结算的内容'));return}
     if(!form.reportValidity())return;
-    var o=makeOrder(lines);
+    var o=makeOrder(lines);lastO=o;
     cart=cart.filter(function(l){return lines.indexOf(l)<0});renderCart();
     var m=compose(o);fill(o,m);selectTab('mail');
     var d=$('#done');d.hidden=false;
     if(LIVE){
-      setStatus('正在发送确认邮件到 '+o.email+' …',false);
-      sendReal(o,m).then(function(){setStatus('确认邮件已发送到 '+o.email+'。短信只做了预览,没有发送。',true)})
-        .catch(function(){setStatus('邮件没有发送成功。请检查 EmailJS 的设置,或稍后再试。',false)});
-    }else{
-      setStatus('演示模式:邮件和短信只在这里预览,没有真正发出。部署版填入 EmailJS 设置后,邮件可以真实发送。',false);
-    }
+      setStatus('sending',o.email);
+      sendReal(o,m).then(function(){setStatus('ok',o.email)}).catch(function(){setStatus('fail')});
+    }else{setStatus('demo')}
     d.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
     $('#done-h').focus({preventScroll:true});
   }
@@ -1423,6 +1735,35 @@ html.loading{overflow:hidden}
     $('#done').hidden=true;
     $('#goods').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
   });
+
+  /* ===== language switch ===== */
+  function applyStatic(){
+    STATIC.forEach(function(r){
+      if(r.n){var lead=r.zh.match(/^\s*/)[0],trail=r.zh.match(/\s*$/)[0];r.n.nodeValue=lead+T(r.k)+trail}
+      else r.e.setAttribute(r.a,T(r.k));
+    });
+    document.title=T('未启之音');
+  }
+  function retextHeading(h){var zh=h.dataset.zh;if(zh!=null)splitText(h,T(zh),true)}
+  function applyLang(l){
+    LANG=l;root.lang=l;
+    try{localStorage.setItem('so-lang',l)}catch(_){}
+    $$('.lang button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.l===l))});
+    applyStatic();marqs.forEach(buildMarq);
+    SP.forEach(function(it){retextHeading(it.e)});HERO.forEach(retextHeading);
+    buildZoneBtns();showZone(curZone);buildBar();showSeg(curSeg);
+    setCheerLbl();if(hintFn)setHint(hintFn);
+    setPrivacy();render();renderCart();
+    tiles.forEach(function(t,i){tilesLabel(t,i)});frontI=-1;placeRing();
+    if(sel>=0)showDetail();
+    if(lastO&&!$('#done').hidden){var m=compose(lastO);fill(lastO,m);setStatus(statKey,statMail)}
+    var ck=$('#cartfab');
+  }
+  $$('.lang button').forEach(function(b){b.addEventListener('click',function(){applyLang(b.dataset.l)})});
+  var storedLang='';try{storedLang=localStorage.getItem('so-lang')||''}catch(_){}
+  if(!storedLang){var nl=(navigator.language||'').toLowerCase();/* default stays Chinese unless the visitor has chosen another language */}
+  if(storedLang==='en'||storedLang==='ko')applyLang(storedLang);
+
 
   /* ===== opening loader ===== */
   function runLoader(done){
